@@ -1,14 +1,20 @@
-import { useEffect, useState, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Package, Mail, Globe } from 'lucide-react';
+import { useEffect, useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Package, Mail, Globe } from "lucide-react";
 
 const stats = [
-  { icon: Package, value: 1247, label: 'Pre-Orders', suffix: '+' },
-  { icon: Mail, value: 3892, label: 'Email Subscribers', suffix: '+' },
-  { icon: Globe, value: 42, label: 'Countries', suffix: '' },
+  { icon: Package, value: 1247, label: "Pre-Orders", suffix: "+" },
+  { icon: Mail, value: 3892, label: "Email Subscribers", suffix: "+" },
+  { icon: Globe, value: 42, label: "Countries", suffix: "" },
 ];
 
-const AnimatedNumber = ({ value, suffix }: { value: number; suffix: string }) => {
+const AnimatedNumber = ({
+  value,
+  suffix,
+}: {
+  value: number;
+  suffix: string;
+}) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -33,8 +39,12 @@ const AnimatedNumber = ({ value, suffix }: { value: number; suffix: string }) =>
   }, [isInView, value]);
 
   return (
-    <span ref={ref} className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-primary">
-      {count.toLocaleString()}{suffix}
+    <span
+      ref={ref}
+      className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-primary"
+    >
+      {count.toLocaleString()}
+      {suffix}
     </span>
   );
 };
@@ -43,7 +53,7 @@ export const SocialProofSection = () => {
   return (
     <section className="py-20 md:py-32 bg-background-secondary relative">
       <div className="absolute inset-0 grid-pattern opacity-50" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
@@ -54,10 +64,11 @@ export const SocialProofSection = () => {
           className="text-center mb-16"
         >
           <h2 className="font-mono text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tight mb-4">
-            Investors Suck, <span className="text-gradient-orange">Real People Rock</span>
+            Join the <span className="text-primary">Movement</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Join thousands of beverage enthusiasts who are ready for the revolution
+            Join thousands of beverage enthusiasts who are ready for the
+            revolution
           </p>
         </motion.div>
 

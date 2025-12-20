@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Heart, ShoppingCart, Eye } from 'lucide-react';
-import { Product } from '@/data/products';
-import { useCartStore } from '@/store/cartStore';
-import { Button } from '@/components/ui/button';
-import { useToast } from '@/hooks/use-toast';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Heart, ShoppingCart, Eye } from "lucide-react";
+import { Product } from "@/data/products";
+import { useCartStore } from "@/store/cartStore";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 interface ProductCardProps {
   product: Product;
@@ -36,14 +36,14 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     setIsWishlisted(!isWishlisted);
     toast({
       title: isWishlisted ? "Removed from wishlist" : "Added to wishlist! ❤️",
-      description: isWishlisted 
+      description: isWishlisted
         ? `${product.name} removed from your wishlist.`
         : `${product.name} added to your wishlist.`,
     });
   };
 
-  const discount = product.originalPrice 
-    ? Math.round((1 - product.price / product.originalPrice) * 100) 
+  const discount = product.originalPrice
+    ? Math.round((1 - product.price / product.originalPrice) * 100)
     : 0;
 
   return (
@@ -65,19 +65,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           {/* Badges */}
           <div className="absolute top-3 left-3 flex flex-col gap-2">
             {product.badge && (
-              <span className={`px-3 py-1 text-xs font-mono font-bold uppercase rounded-full ${
-                product.badge === 'BEST VALUE' 
-                  ? 'bg-accent text-accent-foreground' 
-                  : product.badge === 'LIMITED'
-                  ? 'bg-highlight text-highlight-foreground'
-                  : 'bg-primary text-primary-foreground'
-              }`}>
+              <span className="px-3 py-1 text-xs font-mono font-bold uppercase rounded-full bg-primary text-primary-foreground">
                 {product.badge}
-              </span>
-            )}
-            {discount > 0 && (
-              <span className="px-3 py-1 text-xs font-mono font-bold uppercase rounded-full bg-secondary text-secondary-foreground">
-                -{discount}%
               </span>
             )}
           </div>
@@ -87,10 +76,12 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             onClick={handleWishlist}
             className="absolute top-3 right-3 p-2 rounded-full bg-background/80 backdrop-blur-sm transition-colors hover:bg-background"
           >
-            <Heart 
+            <Heart
               className={`w-5 h-5 transition-colors ${
-                isWishlisted ? 'fill-highlight text-highlight' : 'text-muted-foreground hover:text-highlight'
-              }`} 
+                isWishlisted
+                  ? "fill-highlight text-highlight"
+                  : "text-muted-foreground hover:text-highlight"
+              }`}
             />
           </button>
 

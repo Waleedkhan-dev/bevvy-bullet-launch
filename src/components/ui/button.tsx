@@ -9,15 +9,21 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-[1.02]",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border-2 border-primary text-primary bg-transparent hover:bg-primary/10 hover:scale-[1.02]",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:scale-[1.02]",
+        default:
+          "bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-[1.02]",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border-2 border-primary text-primary bg-transparent hover:bg-primary/10 hover:scale-[1.02]",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:scale-[1.02]",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        glow: "bg-primary text-primary-foreground hover:scale-[1.02] shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(0,240,255,0.6)] border border-primary/50",
-        glowOrange: "bg-secondary text-secondary-foreground hover:scale-[1.02] shadow-[0_0_20px_rgba(255,107,53,0.4)] hover:shadow-[0_0_30px_rgba(255,107,53,0.6)] border border-secondary/50",
-        glass: "bg-[rgba(22,27,34,0.8)] backdrop-blur-md border border-[rgba(0,240,255,0.2)] text-foreground hover:border-primary hover:scale-[1.02]",
+        glow: "bg-primary text-primary-foreground hover:scale-[1.02] shadow-[0_0_20px_rgba(255,0,127,0.4)] hover:shadow-[0_0_30px_rgba(255,0,127,0.6)] border border-primary/50",
+        glowOrange:
+          "bg-primary text-primary-foreground hover:scale-[1.02] shadow-[0_0_20px_rgba(255,0,127,0.4)] hover:shadow-[0_0_30px_rgba(255,0,127,0.6)] border border-primary/50",
+        glass:
+          "bg-[rgba(22,27,34,0.8)] backdrop-blur-md border border-[rgba(255,0,127,0.2)] text-foreground hover:border-primary hover:scale-[1.02]",
       },
       size: {
         default: "h-10 px-6 py-2",
@@ -31,7 +37,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 export interface ButtonProps
@@ -43,8 +49,14 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
-    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
-  },
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
 );
 Button.displayName = "Button";
 

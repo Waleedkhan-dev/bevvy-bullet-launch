@@ -1,30 +1,34 @@
-import { Link } from 'react-router-dom';
-import { Instagram, Twitter, Facebook, Youtube } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { Instagram, Twitter, Facebook, Youtube } from "lucide-react";
 
 const footerLinks = {
   shop: [
-    { name: 'All Products', path: '/shop' },
-    { name: 'Pre-Orders', path: '/shop?filter=preorder' },
-    { name: 'Gift Cards', path: '/shop/gift-cards' },
+    { name: "All Products", path: "/shop" },
+    { name: "Pre-Orders", path: "/shop?filter=preorder" },
+    { name: "Gift Cards", path: "/shop/gift-cards" },
   ],
   company: [
-    { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
-    { name: 'FAQ', path: '/faq' },
-    { name: 'Press Kit', path: '/press' },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+    { name: "FAQ", path: "/faq" },
+    { name: "Press Kit", path: "/press" },
   ],
   legal: [
-    { name: 'Privacy Policy', path: '/privacy' },
-    { name: 'Terms & Conditions', path: '/terms' },
-    { name: 'Shipping Policy', path: '/shipping' },
+    { name: "Privacy Policy", path: "/privacy" },
+    { name: "Terms & Conditions", path: "/terms" },
+    { name: "Shipping Policy", path: "/shipping" },
   ],
 };
 
 const socialLinks = [
-  { name: 'Instagram', icon: Instagram, url: 'https://instagram.com/bevvybullet' },
-  { name: 'Twitter', icon: Twitter, url: 'https://twitter.com/bevvybullet' },
-  { name: 'Facebook', icon: Facebook, url: 'https://facebook.com/bevvybullet' },
-  { name: 'YouTube', icon: Youtube, url: 'https://youtube.com/bevvybullet' },
+  {
+    name: "Instagram",
+    icon: Instagram,
+    url: "https://instagram.com/bevvybullet",
+  },
+  { name: "Twitter", icon: Twitter, url: "https://twitter.com/bevvybullet" },
+  { name: "Facebook", icon: Facebook, url: "https://facebook.com/bevvybullet" },
+  { name: "YouTube", icon: Youtube, url: "https://youtube.com/bevvybullet" },
 ];
 
 export const Footer = () => {
@@ -37,11 +41,12 @@ export const Footer = () => {
             <Link to="/" className="inline-block mb-4">
               <span className="font-mono text-xl font-bold tracking-tight">
                 <span className="text-primary">BEVVY</span>
-                <span className="text-secondary"> BULLET</span>
+                <span className="text-white"> BULLET</span>
               </span>
             </Link>
             <p className="text-muted-foreground text-sm mb-6">
-              Toss Suds With Buds... Literally. The football-shaped koozie that keeps your drinks cold and your throws on point.
+              The world's only foam football that delivers drinks across
+              tailgates, pools, and parties. THE FETCH IS DEAD.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
@@ -123,7 +128,9 @@ export const Footer = () => {
             © 2025 Bevvy Bullet. All Rights Reserved.
           </p>
           <div className="flex items-center gap-4">
-            <span className="text-muted-foreground text-xs">Secure Checkout:</span>
+            <span className="text-muted-foreground text-xs">
+              Secure Checkout:
+            </span>
             <div className="flex gap-2 text-muted-foreground text-xs font-medium">
               <span className="px-2 py-1 bg-muted rounded">VISA</span>
               <span className="px-2 py-1 bg-muted rounded">MC</span>

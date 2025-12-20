@@ -1,19 +1,21 @@
-import { Layout } from '@/components/layout/Layout';
-import { HeroSection } from '@/components/home/HeroSection';
-import { CountdownSection } from '@/components/home/CountdownSection';
-import { FeaturesSection } from '@/components/home/FeaturesSection';
-import { SocialProofSection } from '@/components/home/SocialProofSection';
-import { HowItWorksSection } from '@/components/home/HowItWorksSection';
-import { EmailCTASection } from '@/components/home/EmailCTASection';
+import { Layout } from "@/components/layout/Layout";
+import { HeroSection } from "@/components/home/HeroSection";
+import { FeaturesSection } from "@/components/home/FeaturesSection";
+import { SocialProofSection } from "@/components/home/SocialProofSection";
+import { HowItWorksSection } from "@/components/home/HowItWorksSection";
+import { MidPageEmailSignup } from "@/components/home/MidPageEmailSignup";
+import { PricingTiersSection } from "@/components/home/PricingTiersSection";
+import { EmailCTASection } from "@/components/home/EmailCTASection";
 
 const Index = () => {
   return (
     <Layout>
       <HeroSection />
-      <CountdownSection />
       <FeaturesSection />
       <SocialProofSection />
       <HowItWorksSection />
+      <MidPageEmailSignup />
+      <PricingTiersSection />
       <EmailCTASection />
     </Layout>
   );

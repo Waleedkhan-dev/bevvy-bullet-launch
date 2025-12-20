@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -21,15 +21,15 @@ html {
     --popover: 215 21% 11%;
     --popover-foreground: 0 0% 100%;
 
-    /* Accent Colors */
-    --primary: 184 100% 50%;
-    --primary-foreground: 215 28% 7%;
+    /* Accent Colors - Electric Fuchsia Brand */
+    --primary: 330 100% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 18 100% 60%;
+    --secondary: 330 100% 50%;
     --secondary-foreground: 0 0% 100%;
 
-    --accent: 155 100% 50%;
-    --accent-foreground: 215 28% 7%;
+    --accent: 330 100% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --muted: 215 21% 15%;
     --muted-foreground: 212 9% 58%;
@@ -37,33 +37,33 @@ html {
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Hot Pink Highlight */
-    --highlight: 330 100% 60%;
+    /* Electric Fuchsia Highlight */
+    --highlight: 330 100% 50%;
     --highlight-foreground: 0 0% 100%;
 
     --border: 215 21% 20%;
     --input: 215 21% 15%;
-    --ring: 184 100% 50%;
+    --ring: 330 100% 50%;
 
     --radius: 0.75rem;
 
-    /* Custom Properties */
+    /* Custom Properties - Fuchsia Brand */
     --glass-bg: rgba(22, 27, 34, 0.8);
-    --glass-border: rgba(0, 240, 255, 0.2);
-    --glow-cyan: 0 0 30px rgba(0, 240, 255, 0.5);
-    --glow-orange: 0 0 30px rgba(255, 107, 53, 0.5);
-    --glow-green: 0 0 30px rgba(0, 255, 148, 0.5);
-    --glow-pink: 0 0 30px rgba(255, 51, 153, 0.5);
+    --glass-border: rgba(255, 0, 127, 0.3);
+    --glow-cyan: 0 0 30px rgba(255, 0, 127, 0.5);
+    --glow-orange: 0 0 30px rgba(255, 0, 127, 0.5);
+    --glow-green: 0 0 30px rgba(255, 0, 127, 0.5);
+    --glow-pink: 0 0 30px rgba(255, 0, 127, 0.5);
 
     /* Sidebar */
     --sidebar-background: 215 21% 11%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 184 100% 50%;
-    --sidebar-primary-foreground: 215 28% 7%;
+    --sidebar-primary: 330 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 215 21% 15%;
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 215 21% 20%;
-    --sidebar-ring: 184 100% 50%;
+    --sidebar-ring: 330 100% 50%;
   }
 }
 
@@ -108,19 +108,19 @@ html {
   }
 
   .text-gradient-cyan {
-    @apply bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary to-pink-400 bg-clip-text text-transparent;
   }
 
   .text-gradient-orange {
-    @apply bg-gradient-to-r from-secondary to-highlight bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary to-pink-300 bg-clip-text text-transparent;
   }
 
   .grid-pattern {
     background-image: linear-gradient(
-        rgba(0, 240, 255, 0.03) 1px,
+        rgba(255, 0, 127, 0.03) 1px,
         transparent 1px
       ),
-      linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(255, 0, 127, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
   }
 
@@ -198,10 +198,10 @@ html {
 @keyframes pulseGlow {
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(0, 240, 255, 0.6);
+    box-shadow: 0 0 40px rgba(255, 0, 127, 0.6);
   }
 }
 

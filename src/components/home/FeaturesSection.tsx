@@ -1,27 +1,28 @@
-import { motion } from 'framer-motion';
-import { Circle, Snowflake, Waves } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Circle, Snowflake, Waves } from "lucide-react";
 
 const features = [
   {
     icon: Circle,
     title: "IT'S A FOOTBALL",
-    description: "Regulation grip, perfect spiral every time",
-    color: 'primary',
-    glow: 'glow-cyan',
+    description: "Regulation grip, perfect spiral every time. Fly 40+ yards.",
+    color: "primary",
+    glow: "glow-pink",
   },
   {
     icon: Snowflake,
     title: "IT'S A KOOZIE",
-    description: "Keeps your beverage ice cold for hours",
-    color: 'secondary',
-    glow: 'glow-orange',
+    description: "Securely holds any 12-16oz can or bottle. Keeps drinks cold.",
+    color: "primary",
+    glow: "glow-pink",
   },
   {
     icon: Waves,
     title: "IT FLOATS",
-    description: "Pool parties just got an upgrade",
-    color: 'accent',
-    glow: 'glow-green',
+    description:
+      "Floats on lakes, pools, and party tubs. Pool parties upgraded.",
+    color: "primary",
+    glow: "glow-pink",
   },
 ];
 
@@ -38,9 +39,9 @@ export const FeaturesSection = () => {
           className="text-center mb-16"
         >
           <h2 className="font-mono text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tight mb-4">
-            Forget 12 Ounce Curls...
+            Why Walk When You Can
             <br />
-            <span className="text-gradient-cyan">We're Talking 12 Ounce Hurls!</span>
+            <span className="text-primary">Throw?</span>
           </h2>
         </motion.div>
 
@@ -62,7 +63,7 @@ export const FeaturesSection = () => {
                 style={{
                   backgroundColor: `hsl(var(--${feature.color}) / 0.1)`,
                   borderColor: `hsl(var(--${feature.color}) / 0.3)`,
-                  borderWidth: '1px',
+                  borderWidth: "1px",
                 }}
               >
                 <feature.icon
@@ -73,9 +74,7 @@ export const FeaturesSection = () => {
               <h3 className="font-mono text-xl font-bold uppercase mb-3 text-foreground">
                 {feature.title}
               </h3>
-              <p className="text-muted-foreground">
-                {feature.description}
-              </p>
+              <p className="text-muted-foreground">{feature.description}</p>
             </motion.div>
           ))}
         </div>

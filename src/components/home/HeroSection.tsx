@@ -1,108 +1,174 @@
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Sparkles, Star } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Check, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
 
 export const HeroSection = () => {
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setIsLoading(true);
+
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    toast({
+      title: "You're in! 🎉",
+      description:
+        "You'll be the first to know when we launch + get 45% off Founder pricing.",
+    });
+
+    setEmail("");
+    setIsLoading(false);
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern">
-      {/* Floating Decorations */}
-      <motion.div
-        animate={{ y: [-10, 10, -10] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-20 left-10 text-primary opacity-60"
-      >
-        <Sparkles className="w-8 h-8" />
-      </motion.div>
-      <motion.div
-        animate={{ y: [10, -10, 10] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-40 right-20 text-secondary opacity-60"
-      >
-        <Star className="w-6 h-6 fill-current" />
-      </motion.div>
-      <motion.div
-        animate={{ y: [-5, 15, -5] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-40 left-20 text-accent opacity-60"
-      >
-        <Star className="w-10 h-10 fill-current" />
-      </motion.div>
-      <motion.div
-        animate={{ y: [15, -5, 15] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-60 right-40 text-highlight opacity-60"
-      >
-        <Sparkles className="w-6 h-6" />
-      </motion.div>
-
       {/* Gradient Orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Main Headline */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="font-mono text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6">
-              <span className="text-gradient-cyan">BEVVY</span>
-              <br />
-              <span className="text-gradient-orange">BULLET</span>
+            {/* Main Headline */}
+            <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight">
+              Stop Walking 40 Yards for Your{" "}
+              <span className="text-primary">Favorite Drink</span>. Start
+              Throwing It.
             </h1>
-          </motion.div>
 
-          {/* Tagline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-mono text-lg md:text-xl text-primary uppercase tracking-widest mb-4"
-          >
-            Toss Suds With Buds... Literally
-          </motion.p>
+            {/* Subheadline */}
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
+              The world's only foam football that delivers drinks across
+              tailgates, pools, and parties.
+            </p>
 
-          {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto"
-          >
-            A Football You Can Put a Drink Can Inside
-          </motion.p>
-
-          {/* Product Visual Placeholder */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative w-64 h-64 md:w-80 md:h-80 mx-auto mb-12"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-2xl animate-pulse-glow" />
-            <div className="relative w-full h-full flex items-center justify-center">
-              <div className="w-48 h-48 md:w-64 md:h-64 rounded-full border-2 border-primary/30 flex items-center justify-center bg-card/50 backdrop-blur-sm">
-                <span className="text-6xl md:text-8xl">🏈</span>
+            {/* Feature Bullets */}
+            <div className="space-y-3 mb-8">
+              <div className="flex items-center gap-3">
+                <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                <span className="text-foreground">
+                  Floats on Lakes, Pools, and Party Tubs
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                <span className="text-foreground">
+                  Securely holds any 12-16oz can or bottle
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                <span className="text-foreground">
+                  Engineered to fly 40+ yards for next-level catch and delivery
+                </span>
               </div>
             </div>
+
+            {/* THE FETCH IS DEAD */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="font-mono text-2xl md:text-3xl font-bold text-primary uppercase tracking-wider mb-8"
+            >
+              THE FETCH IS DEAD.
+            </motion.p>
+
+            {/* Email Signup Form - HERO PRIORITY */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="glass-card p-6 max-w-md border-primary/30"
+            >
+              <h3 className="font-mono font-bold text-lg mb-4">
+                Get Launch Alert + 45% Off Founder Pricing
+              </h3>
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <Input
+                  type="email"
+                  placeholder="Enter your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="bg-background border-border focus:border-primary"
+                  required
+                />
+                <Button
+                  type="submit"
+                  variant="glow"
+                  size="lg"
+                  className="w-full"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <span className="flex items-center gap-2">
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{
+                          duration: 1,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                        className="w-5 h-5 border-2 border-current border-t-transparent rounded-full"
+                      />
+                      Sending...
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-2">
+                      Get Launch Alert
+                    </span>
+                  )}
+                </Button>
+              </form>
+              <p className="text-xs text-muted-foreground text-center mt-3">
+                No Spam. Unsubscribe anytime. Founders get $41 pricing (Retail
+                $75).
+              </p>
+            </motion.div>
           </motion.div>
 
-          {/* CTAs */}
+          {/* Right Content - Product Image Placeholder */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative"
           >
-            <Button asChild size="lg" variant="glow">
-              <Link to="/shop">Pre-Order Now</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <a href="#how-it-works">Watch Demo</a>
-            </Button>
+            <div className="relative aspect-square max-w-lg mx-auto">
+              {/* Glow Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-primary/10 rounded-3xl blur-xl" />
+
+              {/* Product Image Container */}
+              <div className="relative w-full h-full rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/20 to-black/50 flex flex-col items-center justify-center p-8">
+                {/* Football Icon Placeholder */}
+                <div className="text-8xl mb-6 opacity-60">🏈</div>
+
+                {/* Placeholder Text */}
+                <p className="font-mono text-sm text-center text-foreground/80 uppercase tracking-wider mb-2">
+                  REPLACE WITH REAL PRODUCT PHOTO
+                </p>
+                <p className="text-xs text-muted-foreground text-center max-w-xs">
+                  From "BB pics" Google Drive folder
+                  <br />
+                  Show product with can/bottle inserted
+                  <br />
+                  OR lifestyle shot of someone throwing it
+                </p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
