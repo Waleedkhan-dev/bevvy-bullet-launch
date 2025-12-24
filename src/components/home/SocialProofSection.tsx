@@ -41,7 +41,7 @@ const AnimatedNumber = ({
   return (
     <span
       ref={ref}
-      className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold text-primary"
+      className="font-mono text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary"
     >
       {count.toLocaleString()}
       {suffix}
@@ -73,7 +73,7 @@ export const SocialProofSection = () => {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -81,9 +81,9 @@ export const SocialProofSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="glass-card p-8 text-center hover-glow-cyan"
+              className="glass-card p-5 sm:p-6 md:p-8 text-center hover-glow-cyan"
             >
-              <stat.icon className="w-10 h-10 mx-auto mb-4 text-primary" />
+              <stat.icon className="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-3 sm:mb-4 text-primary" />
               <AnimatedNumber value={stat.value} suffix={stat.suffix} />
               <p className="font-mono text-sm uppercase tracking-wider text-muted-foreground mt-3">
                 {stat.label}

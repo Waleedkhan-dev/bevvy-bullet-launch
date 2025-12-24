@@ -129,7 +129,7 @@ export const PricingTiersSection = () => {
         </motion.div>
 
         {/* Pricing Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 items-stretch">
           {pricingTiers.map((tier, index) => (
             <motion.div
               key={tier.id}
@@ -137,7 +137,7 @@ export const PricingTiersSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`glass-card p-6 relative flex flex-col ${
+              className={`glass-card p-4 sm:p-6 relative flex flex-col ${
                 tier.popular ? "border-primary ring-2 ring-primary/20" : ""
               }`}
             >

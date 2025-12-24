@@ -38,8 +38,8 @@ export const MidPageEmailSignup = () => {
           transition={{ duration: 0.8 }}
           className="max-w-2xl mx-auto"
         >
-          <div className="glass-card p-8 md:p-10 border-primary/30 text-center">
-            <h2 className="font-mono text-xl md:text-2xl font-bold uppercase tracking-tight mb-2">
+          <div className="glass-card p-5 sm:p-8 md:p-10 border-primary/30 text-center">
+            <h2 className="font-mono text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-tight mb-2">
               Don't Miss the Launch
             </h2>
             <p className="text-primary font-mono text-lg mb-6">

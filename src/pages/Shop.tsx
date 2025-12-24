@@ -34,22 +34,22 @@ const Shop = () => {
     <Layout>
       <div className="min-h-screen">
         {/* Header */}
-        <section className="py-12 md:py-20 border-b border-border">
+        <section className="py-8 sm:py-12 md:py-20 border-b border-border">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <nav className="text-sm text-muted-foreground mb-4">
+              <nav className="text-sm text-muted-foreground mb-3 md:mb-4">
                 <span className="hover:text-primary cursor-pointer">Home</span>
                 <span className="mx-2">/</span>
                 <span className="text-primary">Shop</span>
               </nav>
-              <h1 className="font-mono text-4xl md:text-5xl lg:text-6xl font-bold uppercase">
+              <h1 className="font-mono text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase">
                 <span className="text-primary">Pre-Order</span>
               </h1>
-              <p className="text-muted-foreground mt-4 max-w-xl">
+              <p className="text-muted-foreground mt-3 md:mt-4 max-w-xl text-sm md:text-base">
                 Lock in your Founder pricing before it's gone. Early supporters
                 get the best deals.
               </p>
@@ -58,11 +58,11 @@ const Shop = () => {
         </section>
 
         {/* Products Section */}
-        <section className="py-12">
+        <section className="py-8 sm:py-12">
           <div className="container mx-auto px-4">
             {/* Toolbar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-              <p className="text-muted-foreground">
+            <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4 mb-6 md:mb-8">
+              <p className="text-muted-foreground text-sm md:text-base">
                 {sortedProducts.length} products
               </p>
               <div className="flex items-center gap-4">

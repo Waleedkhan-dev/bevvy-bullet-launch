@@ -42,8 +42,8 @@ export const EmailCTASection = () => {
           transition={{ duration: 0.8 }}
           className="max-w-2xl mx-auto"
         >
-          <div className="glass-card p-8 md:p-12 text-center hover-glow-orange">
-            <h2 className="font-mono text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tight mb-4">
+          <div className="glass-card p-5 sm:p-8 md:p-12 text-center hover-glow-orange">
+            <h2 className="font-mono text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tight mb-3 md:mb-4">
               THE FETCH IS DEAD.
               <br />
               <span className="text-primary">The Throw Is Here.</span>

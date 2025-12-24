@@ -5,6 +5,28 @@
 @tailwind utilities;
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Prevent horizontal scroll on mobile */
+body {
+  overflow-x: hidden;
+}
+
+/* Better touch targets on mobile */
+@media (max-width: 640px) {
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+  }
+
+  /* Reduce animations on mobile for performance */
+  .grid-pattern {
+    background-size: 30px 30px;
+  }
 }
 
 @layer base {

@@ -52,23 +52,33 @@ export const HowItWorksSection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className={`relative flex items-center gap-8 mb-12 last:mb-0 ${
+                className={`relative flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-8 md:mb-12 last:mb-0 ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
+                {/* Mobile Icon - Shown on small screens */}
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className="flex md:hidden w-14 h-14 rounded-full bg-background border-2 border-primary items-center justify-center glow-cyan"
+                >
+                  <step.icon className="w-6 h-6 text-primary" />
+                </motion.div>
+
                 {/* Content */}
                 <div
-                  className={`flex-1 glass-card p-6 md:p-8 hover-glow-cyan ${
+                  className={`flex-1 glass-card p-5 md:p-6 lg:p-8 hover-glow-cyan text-center md:text-left ${
                     index % 2 === 0 ? "md:text-right" : "md:text-left"
                   }`}
                 >
-                  <span className="font-mono text-4xl md:text-5xl font-bold text-primary/20">
+                  <span className="font-mono text-3xl md:text-4xl lg:text-5xl font-bold text-primary">
                     {step.number}
                   </span>
-                  <h3 className="font-mono text-xl md:text-2xl font-bold uppercase mt-2 mb-3">
+                  <h3 className="font-mono text-lg md:text-xl lg:text-2xl font-bold uppercase mt-2 mb-2 md:mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-muted-foreground">{step.description}</p>
+                  <p className="text-muted-foreground text-sm md:text-base">
+                    {step.description}
+                  </p>
                 </div>
 
                 {/* Icon Circle */}

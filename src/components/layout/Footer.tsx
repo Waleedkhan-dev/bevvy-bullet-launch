@@ -34,17 +34,17 @@ const socialLinks = [
 export const Footer = () => {
   return (
     <footer className="bg-background-secondary border-t border-border">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+      <div className="container mx-auto px-4 py-8 md:py-12 lg:py-16">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-12">
           {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="inline-block mb-4">
-              <span className="font-mono text-xl font-bold tracking-tight">
+          <div className="col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-1">
+            <Link to="/" className="inline-block mb-3 md:mb-4">
+              <span className="font-mono text-lg md:text-xl font-bold tracking-tight">
                 <span className="text-primary">BEVVY</span>
                 <span className="text-white"> BULLET</span>
               </span>
             </Link>
-            <p className="text-muted-foreground text-sm mb-6">
+            <p className="text-muted-foreground text-xs md:text-sm mb-4 md:mb-6">
               The world's only foam football that delivers drinks across
               tailgates, pools, and parties. THE FETCH IS DEAD.
             </p>
@@ -123,11 +123,11 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-sm text-center md:text-left">
+        <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-muted-foreground text-xs md:text-sm text-center md:text-left">
             © 2025 Bevvy Bullet. All Rights Reserved.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
             <span className="text-muted-foreground text-xs">
               Secure Checkout:
             </span>

@@ -1,35 +1,42 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Layout } from '@/components/layout/Layout';
-import { useCartStore } from '@/store/cartStore';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { useToast } from '@/hooks/use-toast';
-import { Check, ChevronLeft, CreditCard, Truck, User, FileText } from 'lucide-react';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Layout } from "@/components/layout/Layout";
+import { useCartStore } from "@/store/cartStore";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
+import {
+  Check,
+  ChevronLeft,
+  CreditCard,
+  Truck,
+  User,
+  FileText,
+} from "lucide-react";
 
-type Step = 'contact' | 'shipping' | 'payment' | 'review';
+type Step = "contact" | "shipping" | "payment" | "review";
 
 const steps: { id: Step; label: string; icon: React.ElementType }[] = [
-  { id: 'contact', label: 'Contact', icon: User },
-  { id: 'shipping', label: 'Shipping', icon: Truck },
-  { id: 'payment', label: 'Payment', icon: CreditCard },
-  { id: 'review', label: 'Review', icon: FileText },
+  { id: "contact", label: "Contact", icon: User },
+  { id: "shipping", label: "Shipping", icon: Truck },
+  { id: "payment", label: "Payment", icon: CreditCard },
+  { id: "review", label: "Review", icon: FileText },
 ];
 
 const Checkout = () => {
-  const [currentStep, setCurrentStep] = useState<Step>('contact');
+  const [currentStep, setCurrentStep] = useState<Step>("contact");
   const { items, getTotalPrice, clearCart } = useCartStore();
   const [formData, setFormData] = useState({
-    email: '',
-    firstName: '',
-    lastName: '',
-    phone: '',
-    address: '',
-    city: '',
-    state: '',
-    zip: '',
-    country: 'United States',
+    email: "",
+    firstName: "",
+    lastName: "",
+    phone: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+    country: "United States",
   });
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -57,10 +64,11 @@ const Checkout = () => {
   const handlePlaceOrder = () => {
     toast({
       title: "Order Placed! 🎉",
-      description: "Thank you for your pre-order. We'll notify you when we launch!",
+      description:
+        "Thank you for your pre-order. We'll notify you when we launch!",
     });
     clearCart();
-    navigate('/');
+    navigate("/");
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,7 +80,9 @@ const Checkout = () => {
       <Layout>
         <div className="min-h-screen flex items-center justify-center py-20">
           <div className="text-center">
-            <h1 className="font-mono text-3xl font-bold uppercase mb-4">Your Cart is Empty</h1>
+            <h1 className="font-mono text-3xl font-bold uppercase mb-4">
+              Your Cart is Empty
+            </h1>
             <Button asChild variant="glow" size="lg">
               <Link to="/shop">Start Shopping</Link>
             </Button>
@@ -87,29 +97,31 @@ const Checkout = () => {
       <div className="min-h-screen py-12">
         <div className="container mx-auto px-4">
           {/* Step Indicator */}
-          <div className="max-w-3xl mx-auto mb-12">
+          <div className="max-w-3xl mx-auto mb-8 md:mb-12">
             <div className="flex items-center justify-between">
               {steps.map((step, index) => (
                 <div key={step.id} className="flex items-center">
                   <div className="flex flex-col items-center">
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center font-mono font-bold transition-colors ${
+                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-mono font-bold transition-colors ${
                         index < currentStepIndex
-                          ? 'bg-accent text-accent-foreground'
+                          ? "bg-accent text-accent-foreground"
                           : index === currentStepIndex
-                          ? 'bg-primary text-primary-foreground glow-cyan'
-                          : 'bg-muted text-muted-foreground'
+                          ? "bg-primary text-primary-foreground glow-cyan"
+                          : "bg-muted text-muted-foreground"
                       }`}
                     >
                       {index < currentStepIndex ? (
-                        <Check className="w-5 h-5" />
+                        <Check className="w-4 h-4 sm:w-5 sm:h-5" />
                       ) : (
-                        <step.icon className="w-5 h-5" />
+                        <step.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                       )}
                     </div>
                     <span
-                      className={`mt-2 text-xs font-mono uppercase ${
-                        index <= currentStepIndex ? 'text-foreground' : 'text-muted-foreground'
+                      className={`mt-1 sm:mt-2 text-[10px] sm:text-xs font-mono uppercase hidden sm:block ${
+                        index <= currentStepIndex
+                          ? "text-foreground"
+                          : "text-muted-foreground"
                       }`}
                     >
                       {step.label}
@@ -117,8 +129,8 @@ const Checkout = () => {
                   </div>
                   {index < steps.length - 1 && (
                     <div
-                      className={`w-16 md:w-24 h-0.5 mx-2 transition-colors ${
-                        index < currentStepIndex ? 'bg-accent' : 'bg-muted'
+                      className={`w-8 sm:w-16 md:w-24 h-0.5 mx-1 sm:mx-2 transition-colors ${
+                        index < currentStepIndex ? "bg-accent" : "bg-muted"
                       }`}
                     />
                   )}
@@ -137,9 +149,11 @@ const Checkout = () => {
                 exit={{ opacity: 0, x: -20 }}
                 className="glass-card p-6 md:p-8"
               >
-                {currentStep === 'contact' && (
+                {currentStep === "contact" && (
                   <div className="space-y-6">
-                    <h2 className="font-mono text-2xl font-bold uppercase">Contact Information</h2>
+                    <h2 className="font-mono text-2xl font-bold uppercase">
+                      Contact Information
+                    </h2>
                     <div className="grid gap-4">
                       <Input
                         name="email"
@@ -176,9 +190,11 @@ const Checkout = () => {
                   </div>
                 )}
 
-                {currentStep === 'shipping' && (
+                {currentStep === "shipping" && (
                   <div className="space-y-6">
-                    <h2 className="font-mono text-2xl font-bold uppercase">Shipping Address</h2>
+                    <h2 className="font-mono text-2xl font-bold uppercase">
+                      Shipping Address
+                    </h2>
                     <div className="grid gap-4">
                       <Input
                         name="address"
@@ -223,15 +239,19 @@ const Checkout = () => {
                   </div>
                 )}
 
-                {currentStep === 'payment' && (
+                {currentStep === "payment" && (
                   <div className="space-y-6">
-                    <h2 className="font-mono text-2xl font-bold uppercase">Payment Method</h2>
+                    <h2 className="font-mono text-2xl font-bold uppercase">
+                      Payment Method
+                    </h2>
                     <div className="glass-card p-6 border-2 border-primary">
                       <div className="flex items-center gap-4 mb-4">
                         <CreditCard className="w-8 h-8 text-primary" />
                         <div>
                           <h3 className="font-mono font-bold">Credit Card</h3>
-                          <p className="text-sm text-muted-foreground">Pay securely with your card</p>
+                          <p className="text-sm text-muted-foreground">
+                            Pay securely with your card
+                          </p>
                         </div>
                       </div>
                       <div className="grid gap-4">
@@ -245,18 +265,27 @@ const Checkout = () => {
                   </div>
                 )}
 
-                {currentStep === 'review' && (
+                {currentStep === "review" && (
                   <div className="space-y-6">
-                    <h2 className="font-mono text-2xl font-bold uppercase">Review Your Order</h2>
+                    <h2 className="font-mono text-2xl font-bold uppercase">
+                      Review Your Order
+                    </h2>
                     <div className="space-y-4">
                       {items.map((item) => (
-                        <div key={item.id} className="flex gap-4 p-4 bg-muted rounded-lg">
+                        <div
+                          key={item.id}
+                          className="flex gap-4 p-4 bg-muted rounded-lg"
+                        >
                           <div className="w-16 h-16 bg-background-secondary rounded flex items-center justify-center text-2xl">
                             🏈
                           </div>
                           <div className="flex-1">
-                            <h4 className="font-mono font-bold text-sm uppercase">{item.name}</h4>
-                            <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
+                            <h4 className="font-mono font-bold text-sm uppercase">
+                              {item.name}
+                            </h4>
+                            <p className="text-sm text-muted-foreground">
+                              Qty: {item.quantity}
+                            </p>
                           </div>
                           <span className="font-mono font-bold text-primary">
                             ${(item.price * item.quantity).toFixed(2)}
@@ -265,11 +294,16 @@ const Checkout = () => {
                       ))}
                     </div>
                     <div className="p-4 bg-muted rounded-lg">
-                      <h4 className="font-mono font-bold text-sm uppercase mb-2">Shipping To:</h4>
+                      <h4 className="font-mono font-bold text-sm uppercase mb-2">
+                        Shipping To:
+                      </h4>
                       <p className="text-muted-foreground">
-                        {formData.firstName} {formData.lastName}<br />
-                        {formData.address}<br />
-                        {formData.city}, {formData.state} {formData.zip}<br />
+                        {formData.firstName} {formData.lastName}
+                        <br />
+                        {formData.address}
+                        <br />
+                        {formData.city}, {formData.state} {formData.zip}
+                        <br />
                         {formData.country}
                       </p>
                     </div>
@@ -284,12 +318,20 @@ const Checkout = () => {
                       Back
                     </Button>
                   )}
-                  {currentStep !== 'review' ? (
-                    <Button variant="glow" onClick={handleNext} className="ml-auto">
+                  {currentStep !== "review" ? (
+                    <Button
+                      variant="glow"
+                      onClick={handleNext}
+                      className="ml-auto"
+                    >
                       Continue
                     </Button>
                   ) : (
-                    <Button variant="glow" onClick={handlePlaceOrder} className="ml-auto">
+                    <Button
+                      variant="glow"
+                      onClick={handlePlaceOrder}
+                      className="ml-auto"
+                    >
                       Place Order
                     </Button>
                   )}
@@ -300,14 +342,18 @@ const Checkout = () => {
             {/* Order Summary */}
             <div className="lg:col-span-1">
               <div className="glass-card p-6 sticky top-24">
-                <h2 className="font-mono text-xl font-bold uppercase mb-6">Order Summary</h2>
+                <h2 className="font-mono text-xl font-bold uppercase mb-6">
+                  Order Summary
+                </h2>
                 <div className="space-y-4 mb-6">
                   {items.map((item) => (
                     <div key={item.id} className="flex justify-between text-sm">
                       <span className="text-muted-foreground">
                         {item.name} x{item.quantity}
                       </span>
-                      <span className="font-mono">${(item.price * item.quantity).toFixed(2)}</span>
+                      <span className="font-mono">
+                        ${(item.price * item.quantity).toFixed(2)}
+                      </span>
                     </div>
                   ))}
                   <div className="pt-4 border-t border-border">
@@ -318,13 +364,15 @@ const Checkout = () => {
                     <div className="flex justify-between mt-2">
                       <span className="text-muted-foreground">Shipping</span>
                       <span className="font-mono">
-                        {shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}
+                        {shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`}
                       </span>
                     </div>
                   </div>
                   <div className="pt-4 border-t border-border">
                     <div className="flex justify-between">
-                      <span className="font-mono font-bold uppercase">Total</span>
+                      <span className="font-mono font-bold uppercase">
+                        Total
+                      </span>
                       <span className="font-mono text-2xl font-bold text-primary">
                         ${total.toFixed(2)}
                       </span>
