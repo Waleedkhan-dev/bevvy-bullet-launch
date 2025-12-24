@@ -44,8 +44,8 @@ const Contact = () => {
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
             <motion.form
               onSubmit={handleSubmit}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               className="glass-card p-5 sm:p-6 md:p-8 space-y-4 md:space-y-6"
             >
               <Input
@@ -85,8 +85,9 @@ const Contact = () => {
               </Button>
             </motion.form>
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
               className="space-y-8"
             >
               {[

@@ -91,8 +91,8 @@ const ProductDetail = () => {
           <div className="grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 mb-12 md:mb-20">
             {/* Product Image */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="glass-card aspect-square flex items-center justify-center text-6xl sm:text-8xl md:text-[10rem] lg:text-[12rem]"
             >
@@ -101,9 +101,9 @@ const ProductDetail = () => {
 
             {/* Product Info */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               className="space-y-6"
             >
               {/* Badge */}

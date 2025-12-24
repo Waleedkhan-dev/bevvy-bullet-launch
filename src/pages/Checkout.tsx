@@ -144,9 +144,9 @@ const Checkout = () => {
             <div className="lg:col-span-2">
               <motion.div
                 key={currentStep}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
                 className="glass-card p-6 md:p-8"
               >
                 {currentStep === "contact" && (
