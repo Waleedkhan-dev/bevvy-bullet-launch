@@ -1,0 +1,15 @@
+import React from 'react'
+import { useNavigate } from 'react-router-dom';
+
+const Success = () => {
+    const navigate = useNavigate();
+  return (
+    <div>
+        <h1>Success Page</h1>
+        <p>Your payment was successful!</p>
+        <button onClick={() => navigate('/')}>Back TO HOme</button>
+    </div>
+  )
+}
+
+export default Success
