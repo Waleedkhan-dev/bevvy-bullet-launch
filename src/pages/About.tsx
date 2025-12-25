@@ -18,7 +18,7 @@ const About = () => (
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground">
             Born from a backyard BBQ idea: what if you could throw your drink to
-            your friend without spilling a drop?
+            your friend without spilling  drop?
           </p>
         </motion.div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-10 md:mb-16">
