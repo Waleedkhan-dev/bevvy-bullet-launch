@@ -4,28 +4,30 @@ import { Check, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import axios from "axios";
 
 export const HeroSection = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-
+  const BASE_URL = "http://localhost:3000";
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setIsLoading(true);
-
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    toast({
-      title: "You're in! 🎉",
-      description:
-        "You'll be the first to know when we launch + get 45% off Founder pricing.",
-    });
-
-    setEmail("");
-    setIsLoading(false);
+      e.preventDefault();
+     setIsLoading(true);
+ try {
+  await axios.post("https://bevvy-bullet.app.n8n.cloud/webhook/email-capture", { email });
+ 
+     toast({
+       title: "You're in! 🎉",
+       description:
+         "You'll be the first to know when we launch + get 45% off Founder pricing.",
+     });
+ 
+     setEmail("");
+     setIsLoading(false);
+ } catch (error) {
+  
+ }
   };
 
   return (

@@ -8,16 +8,16 @@ import { useToast } from "@/hooks/use-toast";
 
 const Checkout = () => {
   const { items, getTotalPrice } = useCartStore();
-  const [isProcessing, setIsProcessing] = useState(false);
+  const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const { toast } = useToast();
   const subtotal = getTotalPrice();
   const shipping = subtotal >= 50 ? 0 : 9.99;
   const total = subtotal + shipping;
-
+const BASE_URL = "http://localhost:3000"
   const handleStripeCheckout = async () => {
     setIsProcessing(true);
     try {
-      const res = await fetch("http://localhost:3000/create-checkout-session", {
+      const res = await fetch(`${BASE_URL}/create-checkout-session`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -115,7 +115,7 @@ const Checkout = () => {
               </motion.div>
             </div>
 
-            {/* Order Summary */}
+        
             <div className="lg:col-span-1">
               <div className="glass-card p-6 sticky top-24">
                 <h2 className="font-mono text-xl font-bold uppercase mb-6">

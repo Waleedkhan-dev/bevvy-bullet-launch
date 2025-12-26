@@ -4,11 +4,11 @@ import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import axios from "axios";
 
 export const EmailCTASection = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    fullName: "",
     email: "",
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -17,16 +17,14 @@ export const EmailCTASection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await axios.post("https://bevvy-bullet.app.n8n.cloud/webhook/email-capture", { email: formData.email, firstName: formData.fullName });
 
     toast({
       title: "Welcome to the revolution! 🚀",
       description: "You'll be the first to know when we launch.",
     });
 
-    setFormData({ firstName: "", lastName: "", email: "" });
+    setFormData({ fullName: "", email: "" });
     setIsLoading(false);
   };
 
@@ -56,15 +54,15 @@ export const EmailCTASection = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   type="text"
-                  placeholder="First Name"
-                  value={formData.firstName}
+                  placeholder="Full Name"
+                  value={formData.fullName}
                   onChange={(e) =>
-                    setFormData({ ...formData, firstName: e.target.value })
+                    setFormData({ ...formData, fullName: e.target.value })
                   }
                   className="bg-background border-border focus:border-secondary"
                   required
                 />
-                <Input
+                {/* <Input
                   type="text"
                   placeholder="Last Name"
                   value={formData.lastName}
@@ -73,7 +71,7 @@ export const EmailCTASection = () => {
                   }
                   className="bg-background border-border focus:border-secondary"
                   required
-                />
+                /> */}
               </div>
               <Input
                 type="email"

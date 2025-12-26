@@ -13,7 +13,7 @@ interface ProductCardProps {
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isWishlisted, setIsWishlisted] = useState(false);
+  // const [isWishlisted, setIsWishlisted] = useState(false);
   const addItem = useCartStore((state) => state.addItem);
   const { toast } = useToast();
 
@@ -31,16 +31,16 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     });
   };
 
-  const handleWishlist = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setIsWishlisted(!isWishlisted);
-    toast({
-      title: isWishlisted ? "Removed from wishlist" : "Added to wishlist! ❤️",
-      description: isWishlisted
-        ? `${product.name} removed from your wishlist.`
-        : `${product.name} added to your wishlist.`,
-    });
-  };
+  // const handleWishlist = (e: React.MouseEvent) => {
+  //   e.preventDefault();
+  //   setIsWishlisted(!isWishlisted);
+  //   toast({
+  //     title: isWishlisted ? "Removed from wishlist" : "Added to wishlist! ❤️",
+  //     description: isWishlisted
+  //       ? `${product.name} removed from your wishlist.`
+  //       : `${product.name} added to your wishlist.`,
+  //   });
+  // };
 
   const discount = product.originalPrice
     ? Math.round((1 - product.price / product.originalPrice) * 100)
@@ -72,7 +72,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           </div>
 
           {/* Wishlist Button */}
-          <button
+          {/* <button
             onClick={handleWishlist}
             className="absolute top-3 right-3 p-2 rounded-full bg-background/80 backdrop-blur-sm transition-colors hover:bg-background"
           >
@@ -83,7 +83,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                   : "text-muted-foreground hover:text-highlight"
               }`}
             />
-          </button>
+          </button> */}
 
           {/* Quick Actions */}
           <motion.div
