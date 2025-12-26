@@ -10,15 +10,12 @@ const Checkout = () => {
   const { items, getTotalPrice } = useCartStore();
   const [isProcessing, setIsProcessing] = useState(false);
   const { toast } = useToast();
-
-  
   const subtotal = getTotalPrice();
   const shipping = subtotal >= 50 ? 0 : 9.99;
   const total = subtotal + shipping;
 
   const handleStripeCheckout = async () => {
     setIsProcessing(true);
-
     try {
       const res = await fetch("http://localhost:3000/create-checkout-session", {
         method: "POST",
@@ -39,7 +36,6 @@ const Checkout = () => {
       if (!res.ok) {
         throw new Error("Failed to create checkout session");
       }
-
       const data = await res.json();
       
       if (data.url) {
