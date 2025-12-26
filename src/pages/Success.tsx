@@ -6,7 +6,7 @@ const Success = () => {
   return (
     <div>
         <h1>Congrate</h1>
-        <p>Your payment was successful! </p>
+        <p>Your payment was successfull </p>
         <button onClick={() => navigate('/')}>Back TO HOme</button>
     </div>
   )
