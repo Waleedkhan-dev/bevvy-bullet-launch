@@ -5,8 +5,8 @@ const Success = () => {
     const navigate = useNavigate();
   return (
     <div>
-        <h1>Success Page</h1>
-        <p>Your payment was successful!</p>
+        <h1>Congrate</h1>
+        <p>Your payment was successful! </p>
         <button onClick={() => navigate('/')}>Back TO HOme</button>
     </div>
   )
