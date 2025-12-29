@@ -84,7 +84,7 @@ const BASE_URL = "http://localhost:3000"
                 className="glass-card p-6 md:p-8"
               >
                 <h2 className="font-mono text-2xl font-bold uppercase mb-6">
-                  Review Your Order
+                  Review Your Order  Product
                 </h2>
 
                 <div className="space-y-4">
