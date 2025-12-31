@@ -12,7 +12,7 @@ const Index = () => {
   return (
     <Layout>
       <HeroSection />
-      <VIPOffer />
+      {/* <VIPOffer /> */}
       <FeaturesSection />
       <SocialProofSection />
       <HowItWorksSection />

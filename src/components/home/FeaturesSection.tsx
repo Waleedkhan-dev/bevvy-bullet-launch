@@ -5,14 +5,14 @@ const features = [
   {
     icon: Circle,
     title: "IT'S A FOOTBALL",
-    description: "Regulation grip, perfect spiral every time. Fly 40+ yards.",
+    description: "Designed to throw, easy to catch, plush foam to absorb impacts.",
     color: "primary",
     glow: "glow-pink",
   },
   {
     icon: Snowflake,
     title: "IT'S A KOOZIE",
-    description: "Securely holds any 12-16oz can or bottle. Keeps drinks cold.",
+    description: "Done tossing suds? Both sides double as Koozies to keep your drinks fresh longer",
     color: "primary",
     glow: "glow-pink",
   },
@@ -20,7 +20,7 @@ const features = [
     icon: Waves,
     title: "IT FLOATS",
     description:
-      "Floats on lakes, pools, and party tubs. Pool parties upgraded.",
+      "Don't let your suds go down with the ship! The Bevvy Bullet floats when fully loaded! (Unlike your buddy)",
     color: "primary",
     glow: "glow-pink",
   },
@@ -39,9 +39,7 @@ export const FeaturesSection = () => {
           className="text-center mb-16"
         >
           <h2 className="font-mono text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tight mb-4">
-            Why Walk When You Can
-            <br />
-            <span className="text-primary">Throw?</span>
+            Why <span className="text-primary">Fetch</span> when you can <span className="text-primary">Yeet</span>
           </h2>
         </motion.div>
 

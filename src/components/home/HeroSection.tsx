@@ -12,22 +12,23 @@ export const HeroSection = () => {
   const { toast } = useToast();
   const BASE_URL = "http://localhost:3000";
   const handleSubmit = async (e: React.FormEvent) => {
-      e.preventDefault();
-     setIsLoading(true);
- try {
-  await axios.post("https://bevvy-bullet.app.n8n.cloud/webhook/email-capture", { email });
- 
-     toast({
-       title: "You're in! 🎉",
-       description:
-         "You'll be the first to know when we launch + get 45% off Founder pricing.",
-     });
- 
-     setEmail("");
-     setIsLoading(false);
- } catch (error) {
-  
- }
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      await axios.post(
+        "https://bevvy-bullet.app.n8n.cloud/webhook/email-capture",
+        { email }
+      );
+
+      toast({
+        title: "You're in! 🎉",
+        description:
+          "You'll be the first to know when we launch + get 45% off Founder pricing.",
+      });
+
+      setEmail("");
+      setIsLoading(false);
+    } catch (error) {}
   };
 
   return (
@@ -45,36 +46,39 @@ export const HeroSection = () => {
             transition={{ duration: 0.8 }}
           >
             {/* Main Headline */}
-            <h1 className="font-mono text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6 leading-tight">
-              Stop Walking 40 Yards for Your{" "}
-              <span className="text-primary">Favorite Drink</span>. Start
-              Throwing It.
+            <h1 className="font-mono text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 md:mb-6 leading-tight">
+              Stop Fetching drinks <br />
+              Start <span className="text-primary">Yeeting</span> em!
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
-              The world's only foam football that delivers drinks across
-              tailgates, pools, and parties.
+              The world's only interlocking koozie DESIGNED to be tossed! (We
+              are not the only foam football that carries drinks)
             </p>
 
             {/* Feature Bullets */}
             <div className="space-y-3 mb-8">
               <div className="flex items-center gap-3">
                 <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                <span className="text-foreground">Floats on Water</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Check className="w-5 h-5 text-primary flex-shrink-0" />
                 <span className="text-foreground">
-                  Floats on Lakes, Pools, and Party Tubs
+                  Securely holds any 12oc can!
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <Check className="w-5 h-5 text-primary flex-shrink-0" />
                 <span className="text-foreground">
-                  Securely holds any 12-16oz can or bottle
+                  Easy to Throw, Easy to Catch!
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <Check className="w-5 h-5 text-primary flex-shrink-0" />
                 <span className="text-foreground">
-                  Engineered to fly 40+ yards for next-level catch and delivery
+                  Made out of genuine dad-bod material - soft and gentle!
                 </span>
               </div>
             </div>
@@ -84,9 +88,9 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="font-mono text-xl sm:text-2xl md:text-3xl font-bold text-primary uppercase tracking-wider mb-6 md:mb-8"
+              className="font-mono text-xl sm:text-2xl md:text-3xl font-bold text-primary tracking-wider mb-6 md:mb-8"
             >
-              THE FETCH IS DEAD.
+              The fetch is dead, GRETCHEN (see what we did there?).
             </motion.p>
 
             {/* Email Signup Form - HERO PRIORITY */}

@@ -5,7 +5,7 @@ import { Package, Mail, Globe } from "lucide-react";
 const stats = [
   { icon: Package, value: 1247, label: "Pre-Orders", suffix: "+" },
   { icon: Mail, value: 3892, label: "Email Subscribers", suffix: "+" },
-  { icon: Globe, value: 42, label: "Countries", suffix: "" },
+  { icon: Globe, value: 24, label: "States", suffix: "" },
 ];
 
 const AnimatedNumber = ({
