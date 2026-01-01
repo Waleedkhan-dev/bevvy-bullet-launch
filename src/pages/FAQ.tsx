@@ -13,21 +13,15 @@ const faqs = [
     a: "Bevvy Bullet fits standard 12oz cans perfectly. Slim cans and bottles are not compatible.",
   },
   {
-    q: "Does it really float?",
-    a: "Yes! The Bevvy Bullet floats in water, making it perfect for pool parties and beach days.",
+    q: "Does it shake Up The Drink",
+    a: "Where we are going .we are not worried about that,OK ok more yeet = more bubbles. Toss accordingly . See your vedios how to help to minimize this effect.",
   },
-  {
-    q: "How long does it keep drinks cold?",
-    a: "Our premium neoprene insulation keeps your beverage cold for 2-3 hours depending on conditions.",
-  },
+
   {
     q: "What is your return policy?",
     a: "We offer a 30-day money-back guarantee. If you're not satisfied, send it back for a full refund.",
   },
-  {
-    q: "Do you ship internationally?",
-    a: "Yes! We ship to over 40 countries. Shipping costs are calculated at checkout.",
-  },
+ 
 ];
 
 const FAQ = () => {

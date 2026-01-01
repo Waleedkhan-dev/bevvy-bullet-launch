@@ -1,26 +1,28 @@
 import { motion } from "framer-motion";
-import { Circle, Snowflake, Waves } from "lucide-react";
+import { AlertTriangle, Zap, Rocket } from "lucide-react";
 
 const features = [
   {
-    icon: Circle,
-    title: "IT'S A FOOTBALL",
-    description: "Designed to throw, easy to catch, plush foam to absorb impacts.",
+    icon: AlertTriangle,
+    title: "THE PROBLEM",
+    heading: "47 MILES TOO MANY",
+    description: "Every year you walk a marathon plus Dallas to Fort Worth for other people's drinks. This is insane.",
     color: "primary",
     glow: "glow-pink",
   },
   {
-    icon: Snowflake,
-    title: "IT'S A KOOZIE",
-    description: "Done tossing suds? Both sides double as Koozies to keep your drinks fresh longer",
+    icon: Zap,
+    title: "THE PHYSICS",
+    heading: "FOAM > ALUMINUM",
+    description: "Aluminum: 73% slip rate. Glass: Literal weapon. Foam: 100% catch rate. Math: Simple",
     color: "primary",
     glow: "glow-pink",
   },
   {
-    icon: Waves,
-    title: "IT FLOATS",
-    description:
-      "Don't let your suds go down with the ship! The Bevvy Bullet floats when fully loaded! (Unlike your buddy)",
+    icon: Rocket,
+    title: "THE REVOLUTION",
+    heading: "FIRST 1,000 SAVE 47%",
+    description: "Join the revolution. Save 47 miles. Save grandma.",
     color: "primary",
     glow: "glow-pink",
   },
@@ -69,8 +71,8 @@ export const FeaturesSection = () => {
                   style={{ color: `hsl(var(--${feature.color}))` }}
                 />
               </motion.div>
-              <h3 className="font-mono text-lg sm:text-xl font-bold uppercase mb-2 sm:mb-3 text-foreground">
-                {feature.title}
+              <h3 className="font-mono text-lg sm:text-xl font-bold uppercase mb-2 text-foreground">
+                {feature.heading}
               </h3>
               <p className="text-muted-foreground text-sm sm:text-base">
                 {feature.description}

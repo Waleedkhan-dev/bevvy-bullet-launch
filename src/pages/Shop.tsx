@@ -50,8 +50,7 @@ const Shop = () => {
                 <span className="text-primary">Pre-Order</span>
               </h1>
               <p className="text-muted-foreground mt-3 md:mt-4 max-w-xl text-sm md:text-base">
-                Lock in your Founder pricing before it's gone. Early supporters
-                get the best deals.
+                AMERICANS WALK 47 MILES A YEAR FOR DRINKS. Your walking ends today. First 1,000 save 47%.
               </p>
             </motion.div>
           </div>
