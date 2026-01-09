@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { a } from "node_modules/framer-motion/dist/types.d-DagZKalS";
 
 const HeaderNav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,10 +32,10 @@ const HeaderNav = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            
+            <a
               href="#"
               className="font-mono text-xl md:text-2xl font-bold text-primary tracking-tight"
-            <a>
+            >
               BEVVY BULLET
             </a>
           </motion.div>

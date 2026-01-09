@@ -11,6 +11,7 @@ import Checkout from "./pages/Checkout";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
+import PressKit from "./pages/PressKit";
 import NotFound from "./pages/NotFound";
 import Success from "./pages/Success";
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/success" element={<Success/>} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/press-kit" element={<PressKit />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </TooltipProvider>

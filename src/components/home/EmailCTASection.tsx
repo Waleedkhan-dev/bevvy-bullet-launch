@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,28 @@ export const EmailCTASection = () => {
     email: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [rotatingButtonIndex, setRotatingButtonIndex] = useState(6);
   const { toast } = useToast();
+
+  const rotatingButtonTexts = [
+    "JOIN THE REVOLUTION",
+    "I'M DONE WALKING",
+    "END MY 47 MILES",
+    "I'M NEVER FETCHING AGAIN",
+    "BE THE FIRST TO THROW",
+    "THE FETCH ENDS WITH ME",
+    "NO MORE FETCH QUESTS",
+    "47 MILES IS ENOUGH",
+    "STOP THE WALKING",
+  ];
+
+  // Rotating button text - changes every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRotatingButtonIndex((prev) => (prev + 1) % rotatingButtonTexts.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,64 +71,52 @@ export const EmailCTASection = () => {
               Get Launch Alert + 45% Off Founder Pricing
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Input
-                  type="text"
-                  placeholder="Full Name"
-                  value={formData.fullName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, fullName: e.target.value })
-                  }
-                  className="bg-background border-border focus:border-secondary"
-                  required
-                />
-                {/* <Input
-                  type="text"
-                  placeholder="Last Name"
-                  value={formData.lastName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, lastName: e.target.value })
-                  }
-                  className="bg-background border-border focus:border-secondary"
-                  required
-                /> */}
-              </div>
+            <form onSubmit={handleSubmit} className="space-y-4 flex flex-col items-center">
               <Input
-                type="email"
-                placeholder="Email Address"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
-                className="bg-background border-border focus:border-secondary"
-                required
+              type="text"
+              placeholder="Full Name"
+              value={formData.fullName}
+              onChange={(e) =>
+                setFormData({ ...formData, fullName: e.target.value })
+              }
+              className="bg-background border-border focus:border-secondary max-w-md w-full"
+              required
+              />
+              <Input
+              type="email"
+              placeholder="Email Address"
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              className="bg-background border-border focus:border-secondary max-w-md w-full"
+              required
               />
               <Button
-                type="submit"
-                variant="glowOrange"
-                size="lg"
-                className="w-full"
-                disabled={isLoading}
+              type="submit"
+              variant="glowOrange"
+              size="lg"
+              className="max-w-md w-full"
+              disabled={isLoading}
               >
-                {isLoading ? (
-                  <span className="flex items-center gap-2">
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{
-                        duration: 1,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                      className="w-5 h-5 border-2 border-current border-t-transparent rounded-full"
-                    />
-                    Sending...
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-2">
-                    SEND IT! <Send className="w-5 h-5" />
-                  </span>
-                )}
+              {isLoading ? (
+                <span className="flex items-center gap-2">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  ease: "linear",
+                  }}
+                  className="w-5 h-5 border-2 border-current border-t-transparent rounded-full"
+                />
+                Sending...
+                </span>
+              ) : (
+                <span className="flex items-center gap-2">
+                {rotatingButtonTexts[rotatingButtonIndex]} <Send className="w-5 h-5" />
+                </span>
+              )}
               </Button>
             </form>
 

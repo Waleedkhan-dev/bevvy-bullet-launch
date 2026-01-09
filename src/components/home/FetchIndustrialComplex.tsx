@@ -94,10 +94,10 @@ export const FetchIndustrialComplex = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative"
+              className="relative h-full"
             >
               {/* Dashboard Card */}
-              <div className="glass-card p-6 md:p-8 border-primary/30 relative overflow-hidden group hover:border-primary/50 transition-all duration-300">
+              <div className="glass-card p-6 md:p-8 border-primary/30 relative overflow-hidden group hover:border-primary/50 transition-all duration-300 h-full flex flex-col">
                 {/* Animated Background Gradient */}
                 {stat.isLive && (
                   <motion.div
@@ -135,20 +135,20 @@ export const FetchIndustrialComplex = () => {
                 )}
 
                 {/* Content */}
-                <div className="relative z-10">
+                <div className="relative z-10 flex flex-col h-full">
                   {/* Label */}
-                  <h3 className="font-mono text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider mb-3 md:mb-4">
+                  <h3 className="font-mono text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">
                     {stat.label}
                   </h3>
 
-             
-                  <div className="mb-2">
+                  {/* Value - centered and flexible */}
+                  <div className="flex-1 flex items-center justify-center mb-2">
                     <motion.p
                       key={stat.value}
                       initial={stat.isLive ? { scale: 1.05 } : {}}
                       animate={stat.isLive ? { scale: 1 } : {}}
                       transition={{ duration: 0.3 }}
-                      className={`font-mono text-3xl md:text-4xl lg:text-5xl font-bold ${stat.color} leading-none`}
+                      className={`font-mono text-4xl md:text-5xl font-bold ${stat.color} leading-none text-center break-words`}
                     >
                       {stat.value}
                     </motion.p>
@@ -156,7 +156,7 @@ export const FetchIndustrialComplex = () => {
 
                   {/* Unit */}
                   {stat.unit && (
-                    <p className="font-mono text-sm md:text-base text-foreground/60">
+                    <p className="font-mono text-sm md:text-base text-foreground/60 text-center">
                       {stat.unit}
                     </p>
                   )}

@@ -8,22 +8,32 @@ import { PricingTiersSection } from "@/components/home/PricingTiersSection";
 import { EmailCTASection } from "@/components/home/EmailCTASection";
 import VIPOffer from "./VIPOffer";
 import { FetchIndustrialComplex } from "@/components/home/FetchIndustrialComplex";
-import Header from "@/components/Header";
+// import { ManifestoSection } from "@/components/home/ManifestoSection";
 
 
 const Index = () => {
   return (
     <Layout>
-      {/* <Header/> */}
-      <HeroSection />
-      <FetchIndustrialComplex/>
+      <div id="study">
+        <HeroSection />
+      </div>
+      <div id="fetch">
+        <FetchIndustrialComplex/>
+      </div>
+      {/* <ManifestoSection /> */}
       {/* <VIPOffer /> */}
-      <FeaturesSection />
-      <SocialProofSection />
-      <HowItWorksSection />
-      <MidPageEmailSignup />
-      <PricingTiersSection />
-      <EmailCTASection />
+      <div id="throw">
+        <FeaturesSection />
+        <SocialProofSection />
+      </div>
+      <div id="revolution">
+        <HowItWorksSection />
+      </div>
+      <div id="join">
+        <MidPageEmailSignup />
+        <PricingTiersSection />
+        <EmailCTASection />
+      </div>
     </Layout>
   );
 };

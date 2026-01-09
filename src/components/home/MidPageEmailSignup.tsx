@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,7 +8,28 @@ import { useToast } from "@/hooks/use-toast";
 export const MidPageEmailSignup = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [rotatingButtonIndex, setRotatingButtonIndex] = useState(3);
   const { toast } = useToast();
+
+  const rotatingButtonTexts = [
+    "JOIN THE REVOLUTION",
+    "I'M DONE WALKING",
+    "END MY 47 MILES",
+    "I'M NEVER FETCHING AGAIN",
+    "BE THE FIRST TO THROW",
+    "THE FETCH ENDS WITH ME",
+    "NO MORE FETCH QUESTS",
+    "47 MILES IS ENOUGH",
+    "STOP THE WALKING",
+  ];
+
+  // Rotating button text - changes every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRotatingButtonIndex((prev) => (prev + 1) % rotatingButtonTexts.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,7 +97,7 @@ export const MidPageEmailSignup = () => {
                   />
                 ) : (
                   <span className="flex items-center gap-2">
-                    GET EARLY ACCESS <Send className="w-4 h-4" />
+                    {rotatingButtonTexts[rotatingButtonIndex]} <Send className="w-4 h-4" />
                   </span>
                 )}
               </Button>

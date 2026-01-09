@@ -15,6 +15,7 @@ export const HeroSection = () => {
   const [showPhonePopup, setShowPhonePopup] = useState(false);
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [rotatingTextIndex, setRotatingTextIndex] = useState(0);
+  const [rotatingButtonIndex, setRotatingButtonIndex] = useState(0);
   const { toast } = useToast();
 
   const rotatingTexts = [
@@ -22,6 +23,18 @@ export const HeroSection = () => {
     "Literally the easiest party flex",
     "Turn any can into a backyard legend",
     "Your uncle's definitely stealing this",
+  ];
+
+  const rotatingButtonTexts = [
+    "JOIN THE REVOLUTION",
+    "I'M DONE WALKING",
+    "END MY 47 MILES",
+    "I'M NEVER FETCHING AGAIN",
+    "BE THE FIRST TO THROW",
+    "THE FETCH ENDS WITH ME",
+    "NO MORE FETCH QUESTS",
+    "47 MILES IS ENOUGH",
+    "STOP THE WALKING",
   ];
 
   // Animated counter - increments continuously
@@ -40,6 +53,14 @@ export const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Rotating button text - changes every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRotatingButtonIndex((prev) => (prev + 1) % rotatingButtonTexts.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   // Format number with commas
   const formatNumber = (num: number) => {
     return num.toLocaleString();
@@ -50,13 +71,16 @@ export const HeroSection = () => {
     setIsLoading(true);
 
     try {
-      await axios.post(
+    const res =   await axios.post(
         "https://bevvy-bullet.app.n8n.cloud/webhook/email-capture",
         { 
           email,
           ...(phone && { phone })
         }
+  
+        
       );
+            console.log("res data ",res);
 
       setEmailSubmitted(true);
       setShowPhonePopup(true);
@@ -76,13 +100,14 @@ export const HeroSection = () => {
 
     try {
       if (!skipPhone && phone) {
-        await axios.post(
+   const res =     await axios.post(
           "https://bevvy-bullet.app.n8n.cloud/webhook/email-capture",
           {
             email,
             phone,
           }
         );
+      console.log("res data  resolution",res); 
       }
 
       toast({
@@ -185,7 +210,7 @@ export const HeroSection = () => {
               className="glass-card p-4 sm:p-6 max-w-md border-primary/30"
             >
               <form onSubmit={handleEmailSubmit} className="space-y-4">
-                <div>
+                {/* <div>
                   <Label htmlFor="phone" className="text-sm text-muted-foreground">
                     Phone (Optional)
                   </Label>
@@ -198,7 +223,7 @@ export const HeroSection = () => {
                     className="bg-background border-border focus:border-primary mt-1"
                     disabled={emailSubmitted}
                   />
-                </div>
+                </div> */}
 
                 <div>
                   <Label htmlFor="email" className="text-sm">
@@ -237,7 +262,7 @@ export const HeroSection = () => {
                       Joining...
                     </span>
                   ) : (
-                    "JOIN THE FIRST 1,000 THROWERS"
+                    rotatingButtonTexts[rotatingButtonIndex]
                   )}
                 </Button>
               </form>
@@ -279,95 +304,95 @@ export const HeroSection = () => {
         {showPhonePopup && (
           <>
             {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40"
-              onClick={() => handlePhoneSubmit(true)}
-            />
-
-            {/* Popup */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md z-50 px-4"
-            >
-              <div className="glass-card p-6 sm:p-8 border-primary/30 relative">
-                {/* Close Button */}
-                <button
-                  onClick={() => handlePhoneSubmit(true)}
-                  className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
-                  aria-label="Close"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-
-                {/* Headline */}
-                <h2 className="font-mono text-2xl sm:text-3xl font-bold mb-4 text-primary">
-                  WANT TO SKIP THE LINE?
-                </h2>
-
-                {/* Text */}
-                <p className="text-foreground/90 mb-6">
-                  First to know when we launch via text. Exclusive colorways
-                  and accessories coming.
-                </p>
-
-                {/* Phone Input */}
-                <div className="mb-6">
-                  <Label htmlFor="phone-popup" className="text-sm mb-2 block">
-                    Phone Number (Optional)
-                  </Label>
-                  <Input
-                    id="phone-popup"
-                    type="tel"
-                    placeholder="Enter your phone number"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    className="bg-background border-border focus:border-primary"
-                  />
-                </div>
-
-                {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="flex-1"
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40"
                     onClick={() => handlePhoneSubmit(true)}
-                    disabled={isLoading}
+                  />
+
+                  {/* Popup */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9, x: 100, y: 100 }}
+                    animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, x: 100, y: 100 }}
+                    className="fixed bottom-4 right-4 w-full max-w-md z-50 px-4"
                   >
-                    SKIP
-                  </Button>
-                  <Button
-                    variant="glow"
-                    size="lg"
-                    className="flex-1"
-                    onClick={() => handlePhoneSubmit(false)}
-                    disabled={isLoading || !phone}
-                  >
-                    {isLoading ? (
-                      <span className="flex items-center gap-2">
+                    <div className="glass-card p-6 sm:p-8 border-primary/30 relative">
+                    {/* Close Button */}
+                    <button
+                      onClick={() => handlePhoneSubmit(true)}
+                      className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
+                      aria-label="Close"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+
+                    {/* Headline */}
+                    <h2 className="font-mono text-2xl sm:text-3xl font-bold mb-4 text-primary">
+                      WANT TO SKIP THE LINE?
+                    </h2>
+
+                    {/* Text */}
+                    <p className="text-foreground/90 mb-6">
+                      First to know when we launch via text. Exclusive colorways
+                      and accessories coming.
+                    </p>
+
+                    {/* Phone Input */}
+                    <div className="mb-6">
+                      <Label htmlFor="phone-popup" className="text-sm mb-2 block">
+                      Phone Number (Optional)
+                      </Label>
+                      <Input
+                      id="phone-popup"
+                      type="tel"
+                      placeholder="Enter your phone number"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      className="bg-background border-border focus:border-primary"
+                      />
+                    </div>
+
+                    {/* Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Button
+                      variant="outline"
+                      size="lg"
+                      className="flex-1 whitespace-nowrap"
+                      onClick={() => handlePhoneSubmit(true)}
+                      disabled={isLoading}
+                      >
+                      SKIP
+                      </Button>
+                      <Button
+                      variant="glow"
+                      size="lg"
+                      className="flex-1 whitespace-normal sm:whitespace-nowrap text-xs sm:text-sm"
+                      onClick={() => handlePhoneSubmit(false)}
+                      disabled={isLoading || !phone}
+                      >
+                      {isLoading ? (
+                        <span className="flex items-center gap-2">
                         <motion.div
                           animate={{ rotate: 360 }}
                           transition={{
-                            duration: 1,
-                            repeat: Infinity,
-                            ease: "linear",
+                          duration: 1,
+                          repeat: Infinity,
+                          ease: "linear",
                           }}
                           className="w-5 h-5 border-2 border-current border-t-transparent rounded-full"
                         />
                         Sending...
-                      </span>
-                    ) : (
-                      "GET EXCLUSIVE ACCESS"
-                    )}
-                  </Button>
-                </div>
-              </div>
-            </motion.div>
+                        </span>
+                      ) : (
+                        "GET EXCLUSIVE ACCESS"
+                      )}
+                      </Button>
+                    </div>
+                    </div>
+                  </motion.div>
           </>
         )}
       </AnimatePresence>
