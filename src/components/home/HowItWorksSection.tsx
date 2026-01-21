@@ -5,20 +5,20 @@ const steps = [
   {
     icon: UserPlus,
     number: "01",
-    title: "Sign Up",
-    description: "Join our email list for exclusive early access and updates",
+    title: "SIGN UP NOW",
+    description: "Join our email list for launch notification + Founder pricing access",
   },
   {
     icon: Rocket,
     number: "02",
-    title: "Back Us",
-    description: "Support us on Kickstarter when we launch and save big",
+    title: "BACK US ON KICKSTARTER",
+    description: "When we launch March 1st, pledge on Kickstarter to secure your Bevvy Bullet",
   },
   {
     icon: Package,
     number: "03",
-    title: "Catch It",
-    description: "Receive your Bevvy Bullet and start tossing suds with buds",
+    title: "GET IT SHIPPED",
+    description: "Expected delivery: 2026",
   },
 ];
 
@@ -52,11 +52,10 @@ export const HowItWorksSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className={`relative flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-8 md:mb-12 last:mb-0 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
+                className={`relative flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-8 md:mb-12 last:mb-0 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}
               >
-                {/* Mobile Icon - Shown on small screens */}
+             
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   className="flex md:hidden w-14 h-14 rounded-full bg-background border-2 border-primary items-center justify-center glow-cyan"
@@ -66,9 +65,8 @@ export const HowItWorksSection = () => {
 
                 {/* Content */}
                 <div
-                  className={`flex-1 glass-card p-5 md:p-6 lg:p-8 hover-glow-cyan text-center md:text-left ${
-                    index % 2 === 0 ? "md:text-right" : "md:text-left"
-                  }`}
+                  className={`flex-1 glass-card p-5 md:p-6 lg:p-8 hover-glow-cyan text-center md:text-left ${index % 2 === 0 ? "md:text-right" : "md:text-left"
+                    }`}
                 >
                   <span className="font-mono text-3xl md:text-4xl lg:text-5xl font-bold text-primary">
                     {step.number}

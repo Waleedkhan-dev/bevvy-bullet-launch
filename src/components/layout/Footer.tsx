@@ -124,18 +124,30 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-xs md:text-sm text-center md:text-left">
-            © 2025 Bevvy Bullet. All Rights Reserved.
-          </p>
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
-            <span className="text-muted-foreground text-xs">
-              Secure Checkout:
-            </span>
-            <div className="flex gap-2 text-muted-foreground text-xs font-medium">
-              <span className="px-2 py-1 bg-muted rounded">VISA</span>
-              <span className="px-2 py-1 bg-muted rounded">MC</span>
-              <span className="px-2 py-1 bg-muted rounded">AMEX</span>
-              <span className="px-2 py-1 bg-muted rounded">PayPal</span>
+            <p className="text-muted-foreground text-xs md:text-sm text-center md:text-left">
+              © 2025 Bevvy Bullet. All Rights Reserved.
+            </p>
+            <div className="hidden sm:flex items-center gap-3 text-muted-foreground text-xs ml-4">
+              <span className="px-2 py-1 bg-muted rounded">Patent Pending</span>
+              <span className="px-2 py-1 bg-muted rounded">Made in USA</span>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-xs">
+            <div className="flex items-center gap-3">
+              <span className="text-muted-foreground">Secure Checkout:</span>
+              <div className="flex gap-2 text-muted-foreground font-medium">
+                <span className="px-2 py-1 bg-muted rounded">VISA</span>
+                <span className="px-2 py-1 bg-muted rounded">MC</span>
+                <span className="px-2 py-1 bg-muted rounded">AMEX</span>
+                <span className="px-2 py-1 bg-muted rounded">PayPal</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-2 text-muted-foreground">
+              <span className="text-xs">Email: Kyle@bevvybullet.com</span>
+              <span className="text-xs">Launching on Kickstarter: March 1, 2026</span>
             </div>
           </div>
         </div>

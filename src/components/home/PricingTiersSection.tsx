@@ -26,7 +26,7 @@ const pricingTiers: PricingTier[] = [
     id: "founder",
     name: "FOUNDERS",
     icon: Crown,
-    price: 37,
+    price: 41,
     originalPrice: 67,
     packPrice: 105,
     packOriginalPrice: 201,
@@ -98,9 +98,8 @@ export const PricingTiersSection = () => {
   const handleAddToCart = (tier: PricingTier, packType: "single" | "3pack") => {
     toast({
       title: "Added to cart! 🎉",
-      description: `${tier.name} ${
-        packType === "3pack" ? "3-Pack" : "Single"
-      } added.`,
+      description: `${tier.name} ${packType === "3pack" ? "3-Pack" : "Single"
+        } added.`,
     });
   };
 
@@ -137,9 +136,8 @@ export const PricingTiersSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`glass-card p-4 sm:p-6 relative flex flex-col ${
-                tier.popular ? "border-primary ring-2 ring-primary/20" : ""
-              }`}
+              className={`glass-card p-4 sm:p-6 relative flex flex-col ${tier.popular ? "border-primary ring-2 ring-primary/20" : ""
+                }`}
             >
               {/* Badge */}
               {tier.badge && (
@@ -176,11 +174,10 @@ export const PricingTiersSection = () => {
                   onClick={() =>
                     setSelectedPack({ ...selectedPack, [tier.id]: "single" })
                   }
-                  className={`flex-1 py-2 px-3 text-xs font-mono rounded-lg transition-all ${
-                    getPackType(tier.id) === "single"
+                  className={`flex-1 py-2 px-3 text-xs font-mono rounded-lg transition-all ${getPackType(tier.id) === "single"
                       ? "bg-primary text-primary-foreground"
                       : "bg-muted text-muted-foreground hover:bg-muted/80"
-                  }`}
+                    }`}
                 >
                   SINGLE
                 </button>
@@ -188,11 +185,10 @@ export const PricingTiersSection = () => {
                   onClick={() =>
                     setSelectedPack({ ...selectedPack, [tier.id]: "3pack" })
                   }
-                  className={`flex-1 py-2 px-3 text-xs font-mono rounded-lg transition-all ${
-                    getPackType(tier.id) === "3pack"
+                  className={`flex-1 py-2 px-3 text-xs font-mono rounded-lg transition-all ${getPackType(tier.id) === "3pack"
                       ? "bg-primary text-primary-foreground"
                       : "bg-muted text-muted-foreground hover:bg-muted/80"
-                  }`}
+                    }`}
                 >
                   3-PACK
                 </button>
@@ -221,25 +217,9 @@ export const PricingTiersSection = () => {
                 )}
               </div>
 
-              {/* Remaining Counter */}
-              <div className="mb-6">
-                <div className="flex justify-between text-xs font-mono mb-1">
-                  <span className="text-primary font-bold">
-                    {tier.remaining} remaining
-                  </span>
-                  <span className="text-muted-foreground">of {tier.total}</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{
-                      width: `${(tier.remaining / tier.total) * 100}%`,
-                    }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                    className="h-full bg-primary rounded-full"
-                  />
-                </div>
+              {/* Limited spots notice (static) */}
+              <div className="mb-6 text-center">
+                <p className="text-sm font-mono text-primary font-bold">Limited to 100 spots</p>
               </div>
 
               {/* Perks */}
@@ -275,7 +255,7 @@ export const PricingTiersSection = () => {
         >
           All prices are pre-order pricing. Retail price will be $67 per unit
           after launch. Shipping calculated at checkout. Expected delivery:
-          Spring 2025.
+          2026.
         </motion.p>
       </div>
     </section>

@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/shop/ProductCard";
 import { products } from "@/data/products";
 import { SlidersHorizontal, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const sortOptions = [
   { value: "featured", label: "Featured" },
@@ -33,7 +34,7 @@ const Shop = () => {
   return (
     <Layout>
       <div className="min-h-screen">
-        {/* Header */}
+      
         <section className="py-8 sm:py-12 md:py-20 border-b border-border">
           <div className="container mx-auto px-4">
             <motion.div
@@ -42,7 +43,7 @@ const Shop = () => {
               transition={{ duration: 0.6 }}
             >
               <nav className="text-sm text-muted-foreground mb-3 md:mb-4">
-                <span className="hover:text-primary cursor-pointer">Home</span>
+                <Link to="/" className="hover:text-primary cursor-pointer">Home</Link>
                 <span className="mx-2">/</span>
                 <span className="text-primary">Shop</span>
               </nav>
@@ -56,10 +57,10 @@ const Shop = () => {
           </div>
         </section>
 
-        {/* Products Section */}
+        
         <section className="py-8 sm:py-12">
           <div className="container mx-auto px-4">
-            {/* Toolbar */}
+         
             <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4 mb-6 md:mb-8">
               <p className="text-muted-foreground text-sm md:text-base">
                 {sortedProducts.length} products

@@ -4,25 +4,25 @@ import { AlertTriangle, Zap, Rocket } from "lucide-react";
 const features = [
   {
     icon: AlertTriangle,
-    title: "THE PROBLEM",
-    heading: "47 MILES TOO MANY",
-    description: "Every year you walk a marathon plus Dallas to Fort Worth for other people's drinks. This is insane.",
+    title: "IT'S A FOOTBALL",
+    heading: "Regulation grip. Spirals 40+ yards.",
+    description: "Catches like the real thing.",
     color: "primary",
     glow: "glow-pink",
   },
   {
     icon: Zap,
-    title: "THE PHYSICS",
-    heading: "FOAM > ALUMINUM",
-    description: "Aluminum: 73% slip rate. Glass: Literal weapon. Foam: 100% catch rate. Math: Simple",
+    title: "IT'S A KOOZIE",
+    heading: "Holds any 12-16oz can or bottle.",
+    description: "Twist-lock seal. Zero spills.",
     color: "primary",
     glow: "glow-pink",
   },
   {
     icon: Rocket,
-    title: "THE REVOLUTION",
-    heading: "FIRST 1,000 SAVE 47%",
-    description: "Join the revolution. Save 47 miles. Save grandma.",
+    title: "IT FLOATS",
+    heading: "Floats on lakes, pools, hot tubs.",
+    description: "Never sinks. Never loses your drink.",
     color: "primary",
     glow: "glow-pink",
   },
@@ -41,7 +41,7 @@ export const FeaturesSection = () => {
           className="text-center mb-16"
         >
           <h2 className="font-mono text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tight mb-4">
-            Why <span className="text-primary">Fetch</span> when you can <span className="text-primary">Yeet</span>
+            Why Walk When You Can <span className="text-primary">Throw</span>
           </h2>
         </motion.div>
 

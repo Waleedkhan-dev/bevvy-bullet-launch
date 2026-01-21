@@ -1,7 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
 import { HeroSection } from "@/components/home/HeroSection";
 import { FeaturesSection } from "@/components/home/FeaturesSection";
-import { SocialProofSection } from "@/components/home/SocialProofSection";
 import { HowItWorksSection } from "@/components/home/HowItWorksSection";
 import { MidPageEmailSignup } from "@/components/home/MidPageEmailSignup";
 import { PricingTiersSection } from "@/components/home/PricingTiersSection";
@@ -18,13 +17,12 @@ const Index = () => {
         <HeroSection />
       </div>
       <div id="fetch">
-        <FetchIndustrialComplex/>
+        <FetchIndustrialComplex />
       </div>
       {/* <ManifestoSection /> */}
       {/* <VIPOffer /> */}
       <div id="throw">
         <FeaturesSection />
-        <SocialProofSection />
       </div>
       <div id="revolution">
         <HowItWorksSection />
