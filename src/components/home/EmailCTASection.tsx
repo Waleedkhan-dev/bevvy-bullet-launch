@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,32 +7,9 @@ import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
 
 export const EmailCTASection = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-  });
+  const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [rotatingButtonIndex, setRotatingButtonIndex] = useState(6);
   const { toast } = useToast();
-
-  const rotatingButtonTexts = [
-    "JOIN THE REVOLUTION",
-    "I'M DONE WALKING",
-    "END MY 47 MILES",
-    "I'M NEVER FETCHING AGAIN",
-    "BE THE FIRST TO THROW",
-    "THE FETCH ENDS WITH ME",
-    "NO MORE FETCH QUESTS",
-    "47 MILES IS ENOUGH",
-    "STOP THE WALKING",
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRotatingButtonIndex((prev) => (prev + 1) % rotatingButtonTexts.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,13 +18,13 @@ export const EmailCTASection = () => {
     try {
       const res = await axios.post(
         "https://bevvy-bullet.app.n8n.cloud/webhook/email-capture",
-        { email: formData.email, fullName: formData.fullName }
+        { email }
       );
       console.log("res data", res);
-      setFormData({ fullName: "", email: "" });
+      setEmail("");
       toast({
-        title: "Welcome to the revolution! 🚀",
-        description: "You'll be the first to know when we launch.",
+        title: "You're in! 🎉",
+        description: "Check your email for exclusive founder pricing access.",
       });
     } catch (error) {
       toast({
@@ -77,27 +54,15 @@ export const EmailCTASection = () => {
               THE FETCH IS DEAD.
             </h2>
             <p className="text-muted-foreground mb-8">
-              Get Launch Alert + 45% Off Founder Pricing
+              Get Launch Alert + Lock in Founder Pricing ($41)
             </p>
 
             <form onSubmit={handleSubmit} className="flex flex-col items-center gap-4">
               <Input
-                type="text"
-                placeholder="Full Name"
-                value={formData.fullName}
-                onChange={(e) =>
-                  setFormData({ ...formData, fullName: e.target.value })
-                }
-                className="bg-background border-border focus:border-secondary max-w-md w-full"
-                required
-              />
-              <Input
                 type="email"
                 placeholder="Email Address"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="bg-background border-border focus:border-secondary max-w-md w-full"
                 required
               />
@@ -119,11 +84,11 @@ export const EmailCTASection = () => {
                       }}
                       className="w-5 h-5 border-2 border-current border-t-transparent rounded-full"
                     />
-                    Sending...
+                    SENDING...
                   </span>
                 ) : (
                   <span className="flex items-center gap-2">
-                    {rotatingButtonTexts[rotatingButtonIndex]} <Send className="w-5 h-5" />
+                    COUNT ME IN <Send className="w-5 h-5" />
                   </span>
                 )}
               </Button>

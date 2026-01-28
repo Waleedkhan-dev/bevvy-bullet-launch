@@ -64,7 +64,7 @@ export const MidPageEmailSignup = () => {
               Don't Miss the Launch
             </h2>
             <p className="text-primary font-mono text-lg mb-6">
-              Get 45% Off Founder Pricing
+              Get Launch Alert + Lock in Founder Pricing ($41)
             </p>
 
             <form

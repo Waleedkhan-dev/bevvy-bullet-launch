@@ -17,8 +17,8 @@ const navLinks: NavLink[] = [
     name: "SHOP",
     dropdown: [
       { name: "All Products", path: "/shop" },
-      { name: "Pre-Orders", path: "/shop" },
-      { name: "Gift Cards", path: "/shop" },
+      { name: "Pre-Orders", path: "/shop/pre-orders" },
+      { name: "Gift Cards", path: "/shop/gift-cards" },
     ],
   },
   {
