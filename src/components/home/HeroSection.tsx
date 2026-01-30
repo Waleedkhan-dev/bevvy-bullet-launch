@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Label } from "@/components/ui/label";
+import HeroImg from "@/images/heroimg.png";
 import axios from "axios";
 
 export const HeroSection = () => {
@@ -272,30 +273,23 @@ export const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Product Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative hidden lg:block"
-          >
-            <div className="relative aspect-square max-w-md lg:max-w-lg mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-primary/10 rounded-3xl blur-xl" />
-              <div className="relative w-full h-full rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/20 to-black/50 flex flex-col items-center justify-center p-8">
-                <div className="text-8xl mb-6 opacity-60">🏈</div>
-                <p className="font-mono text-sm text-center text-foreground/80 uppercase tracking-wider mb-2">
-                  REPLACE WITH REAL PRODUCT PHOTO
-                </p>
-                <p className="text-xs text-muted-foreground text-center max-w-xs">
-                  From "BB pics" Google Drive folder
-                  <br />
-                  Show product with can/bottle inserted
-                  <br />
-                  OR lifestyle shot of someone throwing it
-                </p>
-              </div>
-            </div>
-          </motion.div>
+          
+         <motion.div
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.3 }}
+  className="relative hidden lg:block"
+>
+ 
+      <img
+        src={HeroImg}
+        alt="Hero Product"
+        className="w-full h-full object-contain rounded-2xl"
+      />
+
+    
+</motion.div>
+
         </div>
       </div>
 
@@ -303,7 +297,7 @@ export const HeroSection = () => {
       <AnimatePresence>
         {showPhonePopup && (
           <>
-            {/* Backdrop */}
+           
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
