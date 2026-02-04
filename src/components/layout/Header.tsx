@@ -13,6 +13,10 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { name: "THE STUDY", href: "#study" },
+  { name: "THE FETCH", href: "#fetch" },
+  { name: "THE THROW", href: "#throw" },
+  { name: "THE REVOLUTION", href: "#revolution" },
+  { name: "JOIN", href: "#join" },
   {
     name: "SHOP",
     dropdown: [
@@ -30,10 +34,6 @@ const navLinks: NavLink[] = [
       { name: "Press Kit", path: "/press-kit" },
     ],
   },
-  { name: "THE FETCH", href: "#fetch" },
-  { name: "THE THROW", href: "#throw" },
-  { name: "THE REVOLUTION", href: "#revolution" },
-  { name: "JOIN", href: "#join" },
 ];
 
 export const Header = () => {

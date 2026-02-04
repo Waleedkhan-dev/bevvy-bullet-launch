@@ -53,9 +53,8 @@ export const FeaturesSection = () => {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
               whileHover={{ scale: 1.02, y: -5 }}
-              className={`glass-card p-5 sm:p-6 md:p-8 text-center group cursor-pointer hover-glow-cyan`}
+              className={`glass-card p-5 sm:p-6 md:p-8 text-center group cursor-pointer hover-glow-cyan duration-300 transition-all`}
             >
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 5 }}

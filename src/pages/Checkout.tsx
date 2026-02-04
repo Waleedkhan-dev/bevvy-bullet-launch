@@ -13,7 +13,8 @@ const Checkout = () => {
   const subtotal = getTotalPrice();
   const shipping = subtotal >= 50 ? 0 : 9.99;
   const total = subtotal + shipping;
-const BASE_URL = "http://localhost:3000"
+const BASE_URL = process.env.BACKEND_BASE_URL || "http://localhost:3000";
+
   const handleStripeCheckout = async () => {
     setIsProcessing(true);
     try {

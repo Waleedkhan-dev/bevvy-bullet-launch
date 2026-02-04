@@ -67,71 +67,85 @@ export const HeroSection = () => {
     return num.toLocaleString();
   };
 
-  const handleEmailSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+const handleEmailSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsLoading(true);
 
-    try {
-    const res =   await axios.post(
-        "https://bevvy-bullet.app.n8n.cloud/webhook/email-capture",
-        { 
-          email,
-          ...(phone && { phone })
-        }
-  
-        
-      );
-            console.log("res data ",res);
+  try {
+    const res = await axios.post(
+      "https://bevvy-bullet.app.n8n.cloud/webhook/email-capture",
+      { email }
+    );
 
+    if (res.data?.success) {
+      // Email saved successfully → show phone popup
       setEmailSubmitted(true);
       setShowPhonePopup(true);
-      setIsLoading(false);
-    } catch (error) {
+    } else if (res.data?.error === "EMAIL_EXISTS") {
+      // Email already exists → show toast, no popup
+      toast({
+        title: "Email already exists",
+        description: "Please enter a different email.",
+        variant: "destructive",
+      });
+    } else {
+      // Any other error
       toast({
         title: "Oops! Something went wrong",
         description: "Please try again later.",
         variant: "destructive",
       });
-      setIsLoading(false);
     }
-  };
+  } catch (error) {
+    toast({
+      title: "Network error",
+      description: "Please check your connection and try again.",
+      variant: "destructive",
+    });
+  } finally {
+    setIsLoading(false);
+  }
+};
 
-  const handlePhoneSubmit = async (skipPhone: boolean = false) => {
-    setIsLoading(true);
 
-    try {
-      if (!skipPhone && phone) {
-   const res =     await axios.post(
-          "https://bevvy-bullet.app.n8n.cloud/webhook/email-capture",
-          {
-            email,
-            phone,
-          }
-        );
-      console.log("res data  resolution",res); 
-      }
 
-      toast({
-        title: "You're in! 🎉",
-        description: skipPhone
-          ? "You'll be the first to know when we launch."
-          : "You'll get exclusive text alerts + early access to colorways.",
-      });
+ const handlePhoneSubmit = async (skipPhone = false) => {
+  setIsLoading(true);
 
-      setShowPhonePopup(false);
-      setEmail("");
-      setPhone("");
-      setEmailSubmitted(false);
-    } catch (error) {
-      toast({
-        title: "Oops! Something went wrong",
-        description: "Please try again later.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
+  try {
+    if (!skipPhone && phone) {
+      await axios.post(
+        "https://bevvy-bullet.app.n8n.cloud/webhook/email-capture",
+        {
+          action: "update_phone",
+          email,
+          phone,
+        }
+      );
     }
-  };
+
+    toast({
+      title: "You're in! 🎉",
+      description: skipPhone
+        ? "You'll be the first to know when we launch."
+        : "You'll get exclusive text alerts + early access.",
+    });
+
+    setShowPhonePopup(false);
+    setEmail("");
+    setPhone("");
+    setEmailSubmitted(false);
+  } catch (error) {
+    toast({
+      title: "Oops! Something went wrong",
+      description: "Please try again later.",
+      variant: "destructive",
+    });
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern w-full">
