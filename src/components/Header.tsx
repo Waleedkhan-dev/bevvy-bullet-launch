@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const HeaderNav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,12 +33,12 @@ const HeaderNav = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <a
-              href="#"
+            <Link
+              to="/"
               className="font-mono text-xl md:text-2xl font-bold text-primary tracking-tight"
             >
               BEVVY BULLET
-            </a>
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}

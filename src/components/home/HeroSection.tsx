@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import HeroImg from "@/images/heroimg.png";
 import axios from "axios";
 
+
 export const HeroSection = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -38,7 +39,7 @@ export const HeroSection = () => {
     "STOP THE WALKING",
   ];
 
-  // Animated counter - increments continuously
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCount((prev) => prev + 1);
@@ -54,7 +55,7 @@ export const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Rotating button text - changes every 3 seconds
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setRotatingButtonIndex((prev) => (prev + 1) % rotatingButtonTexts.length);
@@ -69,82 +70,86 @@ export const HeroSection = () => {
 
 const handleEmailSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
-  setIsLoading(true);
-
-  try {
-    const res = await axios.post(
-      "https://bevvy-bullet.app.n8n.cloud/webhook/email-capture",
-      { email }
-    );
-
-    if (res.data?.success) {
-      // Email saved successfully → show phone popup
-      setEmailSubmitted(true);
-      setShowPhonePopup(true);
-    } else if (res.data?.error === "EMAIL_EXISTS") {
-      // Email already exists → show toast, no popup
-      toast({
-        title: "Email already exists",
-        description: "Please enter a different email.",
-        variant: "destructive",
-      });
-    } else {
-      // Any other error
-      toast({
-        title: "Oops! Something went wrong",
-        description: "Please try again later.",
-        variant: "destructive",
-      });
-    }
-  } catch (error) {
-    toast({
-      title: "Network error",
-      description: "Please check your connection and try again.",
-      variant: "destructive",
-    });
-  } finally {
-    setIsLoading(false);
-  }
+  if (!email) return ;
+   setEmailSubmitted(true);
+   setShowPhonePopup(true);
 };
 
 
-
- const handlePhoneSubmit = async (skipPhone = false) => {
+const handlePhoneSubmit =  async (skipPhone = false)=>{
   setIsLoading(true);
+      setShowPhonePopup(false);
 
   try {
-    if (!skipPhone && phone) {
+    const payload:any = { action: "update_email", email };
+    if(!skipPhone && phone){
+      payload.phone = phone;
+      payload.action = "update_phone";
+
       await axios.post(
         "https://bevvy-bullet.app.n8n.cloud/webhook/email-capture",
-        {
-          action: "update_phone",
-          email,
-          phone,
-        }
-      );
-    }
-
-    toast({
+        payload
+      )
+       toast({
       title: "You're in! 🎉",
       description: skipPhone
         ? "You'll be the first to know when we launch."
         : "You'll get exclusive text alerts + early access.",
     });
 
-    setShowPhonePopup(false);
     setEmail("");
     setPhone("");
     setEmailSubmitted(false);
+    }
   } catch (error) {
-    toast({
+      toast({
       title: "Oops! Something went wrong",
       description: "Please try again later.",
       variant: "destructive",
     });
   } finally {
     setIsLoading(false);
-  }
+}
 };
+
+
+
+//  const handlePhoneSubmit = async (skipPhone = false) => {
+//   setIsLoading(true);
+
+//   try {
+//     if (!skipPhone && phone) {
+//       await axios.post(
+//         "https://bevvy-bullet.app.n8n.cloud/webhook/email-capture",
+//         {
+//           action: "update_phone",
+//           email,
+//           phone,
+//         }
+//       );
+//     }
+
+//     toast({
+//       title: "You're in! 🎉",
+//       description: skipPhone
+//         ? "You'll be the first to know when we launch."
+//         : "You'll get exclusive text alerts + early access.",
+//     });
+
+//     setShowPhonePopup(false);
+//     setEmail("");
+//     setPhone("");
+//     setEmailSubmitted(false);
+//   } catch (error) {
+//     toast({
+//       title: "Oops! Something went wrong",
+//       description: "Please try again later.",
+//       variant: "destructive",
+//     });
+//   } finally {
+//     setIsLoading(false);
+//   }
+// };
 
 
   return (
@@ -225,21 +230,6 @@ const handleEmailSubmit = async (e: React.FormEvent) => {
               className="glass-card p-4 sm:p-6 max-w-md border-primary/30"
             >
               <form onSubmit={handleEmailSubmit} className="space-y-4">
-                {/* <div>
-                  <Label htmlFor="phone" className="text-sm text-muted-foreground">
-                    Phone (Optional)
-                  </Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    placeholder="Enter your phone number"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    className="bg-background border-border focus:border-primary mt-1"
-                    disabled={emailSubmitted}
-                  />
-                </div> */}
-
                 <div>
                   <Label htmlFor="email" className="text-sm">
                     Email <span className="text-destructive">*</span>
@@ -348,7 +338,7 @@ const handleEmailSubmit = async (e: React.FormEvent) => {
                       and accessories coming.
                     </p>
 
-                    {/* Phone Input */}
+                
                     <div className="mb-6">
                       <Label htmlFor="phone-popup" className="text-sm mb-2 block">
                       Phone Number (Optional)
@@ -363,42 +353,43 @@ const handleEmailSubmit = async (e: React.FormEvent) => {
                       />
                     </div>
 
-                    {/* Buttons */}
+                    
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <Button
-                      variant="outline"
-                      size="lg"
-                      className="flex-1 whitespace-nowrap"
-                      onClick={() => handlePhoneSubmit(true)}
-                      disabled={isLoading}
-                      >
-                      SKIP
-                      </Button>
-                      <Button
-                      variant="glow"
-                      size="lg"
-                      className="flex-1 whitespace-normal sm:whitespace-nowrap text-xs sm:text-sm"
-                      onClick={() => handlePhoneSubmit(false)}
-                      disabled={isLoading || !phone}
-                      >
-                      {isLoading ? (
-                        <span className="flex items-center gap-2">
-                        <motion.div
-                          animate={{ rotate: 360 }}
-                          transition={{
-                          duration: 1,
-                          repeat: Infinity,
-                          ease: "linear",
-                          }}
-                          className="w-5 h-5 border-2 border-current border-t-transparent rounded-full"
-                        />
-                        Sending...
-                        </span>
-                      ) : (
-                        "GET EXCLUSIVE ACCESS"
-                      )}
-                      </Button>
-                    </div>
+  <Button
+    variant="outline"
+    size="lg"
+    className="flex-1 whitespace-nowrap"
+    onClick={() => handlePhoneSubmit(true)}
+    disabled={isLoading}
+  >
+    SKIP
+  </Button>
+  <Button
+    variant="glow"
+    size="lg"
+    className="flex-1 whitespace-normal sm:whitespace-nowrap text-xs sm:text-sm"
+    onClick={() => handlePhoneSubmit(false)}
+    disabled={isLoading || !phone}
+  >
+    {isLoading ? (
+      <span className="flex items-center gap-2">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 1,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="w-5 h-5 border-2 border-current border-t-transparent rounded-full"
+        />
+        Sending...
+      </span>
+    ) : (
+      "GET EXCLUSIVE ACCESS"
+    )}
+  </Button>
+</div>
+
                     </div>
                   </motion.div>
           </>

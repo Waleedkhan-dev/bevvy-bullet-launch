@@ -46,7 +46,7 @@ export const FetchIndustrialComplex = () => {
     },
     {
       label: "BIG PLAYS MISSED",
-      value: "All of them",
+      value: "All ",
      
       color: "text-yellow-500  ",
       isLive: false,

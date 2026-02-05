@@ -6,6 +6,7 @@ import { useCartStore } from "@/store/cartStore";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
+
 const Checkout = () => {
   const { items, getTotalPrice } = useCartStore();
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
@@ -13,8 +14,10 @@ const Checkout = () => {
   const subtotal = getTotalPrice();
   const shipping = subtotal >= 50 ? 0 : 9.99;
   const total = subtotal + shipping;
-const BASE_URL = process.env.BACKEND_BASE_URL || "http://localhost:3000";
+const BASE_URL =  import.meta.env.VITE_BACKEND_BASE_URL || "http://localhost:3000";
+console.log("BASE_URL",BASE_URL);
 
+const clearCart = useCartStore((state) => state.clearCart);
   const handleStripeCheckout = async () => {
     setIsProcessing(true);
     try {
@@ -38,7 +41,7 @@ const BASE_URL = process.env.BACKEND_BASE_URL || "http://localhost:3000";
         throw new Error("Failed to create checkout session");
       }
       const data = await res.json();
-      
+      clearCart();
       if (data.url) {
         window.location.href = data.url;
       } else {
