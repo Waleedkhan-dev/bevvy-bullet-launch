@@ -37,11 +37,11 @@ const HeaderNav = () => {
               to="/"
               className="font-mono text-xl md:text-2xl font-bold text-primary tracking-tight"
             >
+              
               BEVVY BULLET
             </Link>
           </motion.div>
 
-          {/* Desktop Navigation */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}

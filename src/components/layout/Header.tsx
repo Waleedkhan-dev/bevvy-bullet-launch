@@ -41,6 +41,7 @@ export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const tototalItems = useCartStore((state) => state.getTotalItems());
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -183,24 +184,24 @@ export const Header = () => {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <button className="p-2 text-muted-foreground hover:text-primary transition-colors">
+            {/* <button className="p-2 text-muted-foreground hover:text-primary transition-colors">
               <Search className="w-5 h-5" />
             </button>
             <button className="p-2 text-muted-foreground hover:text-primary transition-colors">
               <User className="w-5 h-5" />
-            </button>
+            </button> */}
             <Link
               to="/cart"
               className="relative p-2 text-muted-foreground hover:text-primary transition-colors"
             >
               <ShoppingCart className="w-5 h-5" />
-              {useCartStore((state) => state.getTotalItems()) > 0 && (
+              {tototalItems > 0 && (
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground text-xs font-bold rounded-full flex items-center justify-center"
                 >
-                  {useCartStore((state) => state.getTotalItems())}
+                  {tototalItems}
                 </motion.span>
               )}
             </Link>
@@ -213,9 +214,9 @@ export const Header = () => {
               className="relative p-2 text-muted-foreground hover:text-primary transition-colors"
             >
               <ShoppingCart className="w-5 h-5" />
-              {useCartStore((state) => state.getTotalItems()) > 0 && (
+              {tototalItems > 0 && (
                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-primary-foreground text-xs font-bold rounded-full flex items-center justify-center">
-                  {useCartStore((state) => state.getTotalItems())}
+                  {tototalItems}
                 </span>
               )}
             </Link>

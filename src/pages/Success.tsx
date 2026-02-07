@@ -39,7 +39,7 @@ const Success = () => {
 
                 <button 
                     onClick={() => navigate('/')}
-                    className="bg-bevvy-pink hover:bg-bevvy-pink-dark text-white font-bold py-4 px-12 text-lg font-mono uppercase tracking-wider rounded-lg transition-all duration-300 shadow-lg shadow-bevvy-pink/30 hover:shadow-xl hover:shadow-bevvy-pink/50 hover:-translate-y-0.5 active:translate-y-0"
+                    className="bg-pink-600 hover:bg-bevvy-pink-dark text-white font-bold py-4 px-12 text-lg font-mono uppercase tracking-wider rounded-lg transition-all duration-300 shadow-lg shadow-bevvy-pink/30 hover:shadow-xl hover:shadow-bevvy-pink/50 hover:-translate-y-0.5 active:translate-y-0"
                 >
                     Back to Home
                 </button>

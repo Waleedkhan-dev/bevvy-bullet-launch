@@ -10,7 +10,7 @@ const About = () => (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-3xl mx-auto mb-10 md:mb-16"
+          className="mx-auto mb-10 md:mb-16"
         >
           <h1 className="font-mono text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase mb-6 md:mb-8 text-center">
             <span className="text-primary">THE LAKE INCIDENT</span>
