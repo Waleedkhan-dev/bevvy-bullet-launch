@@ -6,7 +6,15 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Label } from "@/components/ui/label";
 import HeroImg from "@/images/heroimg.png";
+import HeroImg1 from "@/images/image.png";
 import axios from "axios";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-coverflow';
+
 
 
 export const HeroSection = () => {
@@ -55,7 +63,7 @@ export const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
       setRotatingButtonIndex((prev) => (prev + 1) % rotatingButtonTexts.length);
@@ -68,88 +76,55 @@ export const HeroSection = () => {
     return num.toLocaleString();
   };
 
-const handleEmailSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  if (!email) return ;
-   setEmailSubmitted(true);
-   setShowPhonePopup(true);
-};
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setEmailSubmitted(true);
+    setShowPhonePopup(true);
+  };
 
 
-const handlePhoneSubmit =  async (skipPhone = false)=>{
-  setIsLoading(true);
-      setShowPhonePopup(false);
+  const handlePhoneSubmit = async (skipPhone = false) => {
+    setIsLoading(true);
+    setShowPhonePopup(false);
 
-  try {
-    const payload:any = { action: "update_email", email };
-    if(!skipPhone && phone){
-      payload.phone = phone;
-      payload.action = "update_phone";
+    try {
+      const payload: any = { action: "update_email", email };
+      if (!skipPhone && phone) {
+        payload.phone = phone;
+        payload.action = "update_phone";
+      }
 
       await axios.post(
         "https://bevvy-bullet.app.n8n.cloud/webhook/email-capture",
         payload
-      )
-       toast({
-      title: "You're in! 🎉",
-      description: skipPhone
-        ? "You'll be the first to know when we launch."
-        : "You'll get exclusive text alerts + early access.",
-    });
+      );
 
-    setEmail("");
-    setPhone("");
-    setEmailSubmitted(false);
-    }
-  } catch (error) {
       toast({
-      title: "Oops! Something went wrong",
-      description: "Please try again later.",
-      variant: "destructive",
-    });
-  } finally {
-    setIsLoading(false);
-}
-};
+        title: "You're in! 🎉",
+        description: skipPhone
+          ? "You'll be the first to know when we launch."
+          : "You'll get exclusive text alerts + early access.",
+      });
+
+      setEmail("");
+      setPhone("");
+      setEmailSubmitted(false);
+    } catch (error) {
+      toast({
+        title: "Oops! Something went wrong",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+      setEmailSubmitted(false);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
 
 
-//  const handlePhoneSubmit = async (skipPhone = false) => {
-//   setIsLoading(true);
-
-//   try {
-//     if (!skipPhone && phone) {
-//       await axios.post(
-//         "https://bevvy-bullet.app.n8n.cloud/webhook/email-capture",
-//         {
-//           action: "update_phone",
-//           email,
-//           phone,
-//         }
-//       );
-//     }
-
-//     toast({
-//       title: "You're in! 🎉",
-//       description: skipPhone
-//         ? "You'll be the first to know when we launch."
-//         : "You'll get exclusive text alerts + early access.",
-//     });
-
-//     setShowPhonePopup(false);
-//     setEmail("");
-//     setPhone("");
-//     setEmailSubmitted(false);
-//   } catch (error) {
-//     toast({
-//       title: "Oops! Something went wrong",
-//       description: "Please try again later.",
-//       variant: "destructive",
-//     });
-//   } finally {
-//     setIsLoading(false);
-//   }
-// };
+  const imageArray = [HeroImg, HeroImg1, HeroImg, HeroImg1, HeroImg];
 
 
   return (
@@ -159,8 +134,8 @@ const handlePhoneSubmit =  async (skipPhone = false)=>{
       <div className="absolute bottom-1/4 right-0 sm:right-1/4 w-48 h-48 md:w-96 md:h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -227,7 +202,7 @@ const handlePhoneSubmit =  async (skipPhone = false)=>{
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="glass-card p-4 sm:p-6 max-w-md border-primary/30"
+              className="glass-card p-4 sm:p-6 w-full lg:max-w-md border-primary/30"
             >
               <form onSubmit={handleEmailSubmit} className="space-y-4">
                 <div>
@@ -277,22 +252,50 @@ const handlePhoneSubmit =  async (skipPhone = false)=>{
             </motion.div>
           </motion.div>
 
-          
-         <motion.div
-  initial={{ opacity: 0, y: 30 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, delay: 0.3 }}
-  className="relative hidden lg:block"
->
- 
-      <img
-        src={HeroImg}
-        alt="Hero Product"
-        className="w-full h-full object-contain rounded-2xl"
-      />
 
-    
-</motion.div>
+
+          {/* Right Content - Product Slider */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="relative w-full flex items-center justify-center"
+          >
+            <div className="w-full">
+              <Swiper
+                loop={true}
+                effect="coverflow"
+                grabCursor={true}
+                centeredSlides={true}
+                // slidesPerView="auto"
+                slidesPerView={1}
+                autoplay={{
+                  delay: 4000,
+                  disableOnInteraction: false,
+                }}
+                coverflowEffect={{
+                  rotate: 0,
+                  stretch: 0,
+                  depth: 150,
+                  modifier: 2.5,
+                  slideShadows: true,
+                }}
+                pagination={{ clickable: true }}
+                modules={[EffectCoverflow, Pagination, Autoplay]}
+                className="hero-swiper"
+              >
+                {imageArray.map((img, index) => (
+                  <SwiperSlide key={index} className="hero-slide">
+                    <img
+                      src={img}
+                      alt={`Bevvy Bullet Product ${index + 1}`}
+                      className="w-full h-full object-cover rounded-2xl"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </motion.div>
 
         </div>
       </div>
@@ -301,102 +304,102 @@ const handlePhoneSubmit =  async (skipPhone = false)=>{
       <AnimatePresence>
         {showPhonePopup && (
           <>
-           
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40"
-                    onClick={() => handlePhoneSubmit(true)}
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40"
+              onClick={() => handlePhoneSubmit(true)}
+            />
+
+            {/* Popup */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, x: 100, y: 100 }}
+              animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, x: 100, y: 100 }}
+              className="fixed bottom-4 right-4 w-full max-w-md z-50 px-4"
+            >
+              <div className="glass-card p-6 sm:p-8 border-primary/30 relative">
+                {/* Close Button */}
+                <button
+                  onClick={() => handlePhoneSubmit(true)}
+                  className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                {/* Headline */}
+                <h2 className="font-mono text-2xl sm:text-3xl font-bold mb-4 text-primary">
+                  WANT TO SKIP THE LINE?
+                </h2>
+
+                {/* Text */}
+                <p className="text-foreground/90 mb-6">
+                  First to know when we launch via text. Exclusive colorways
+                  and accessories coming.
+                </p>
+
+
+                <div className="mb-6">
+                  <Label htmlFor="phone-popup" className="text-sm mb-2 block">
+                    Phone Number (Optional)
+                  </Label>
+                  <Input
+                    id="phone-popup"
+                    type="tel"
+                    placeholder="Enter your phone number"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="bg-background border-border focus:border-primary"
                   />
+                </div>
 
-                  {/* Popup */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9, x: 100, y: 100 }}
-                    animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.9, x: 100, y: 100 }}
-                    className="fixed bottom-4 right-4 w-full max-w-md z-50 px-4"
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="flex-1 whitespace-nowrap"
+                    onClick={() => handlePhoneSubmit(true)}
+                    disabled={isLoading}
                   >
-                    <div className="glass-card p-6 sm:p-8 border-primary/30 relative">
-                    {/* Close Button */}
-                    <button
-                      onClick={() => handlePhoneSubmit(true)}
-                      className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors"
-                      aria-label="Close"
-                    >
-                      <X className="w-5 h-5" />
-                    </button>
+                    SKIP
+                  </Button>
+                  <Button
+                    variant="glow"
+                    size="lg"
+                    className="flex-1 whitespace-normal sm:whitespace-nowrap text-xs sm:text-sm"
+                    onClick={() => handlePhoneSubmit(false)}
+                    disabled={isLoading || !phone}
+                  >
+                    {isLoading ? (
+                      <span className="flex items-center gap-2">
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
+                          className="w-5 h-5 border-2 border-current border-t-transparent rounded-full"
+                        />
+                        Sending...
+                      </span>
+                    ) : (
+                      "GET EXCLUSIVE ACCESS"
+                    )}
+                  </Button>
+                </div>
 
-                    {/* Headline */}
-                    <h2 className="font-mono text-2xl sm:text-3xl font-bold mb-4 text-primary">
-                      WANT TO SKIP THE LINE?
-                    </h2>
-
-                    {/* Text */}
-                    <p className="text-foreground/90 mb-6">
-                      First to know when we launch via text. Exclusive colorways
-                      and accessories coming.
-                    </p>
-
-                
-                    <div className="mb-6">
-                      <Label htmlFor="phone-popup" className="text-sm mb-2 block">
-                      Phone Number (Optional)
-                      </Label>
-                      <Input
-                      id="phone-popup"
-                      type="tel"
-                      placeholder="Enter your phone number"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      className="bg-background border-border focus:border-primary"
-                      />
-                    </div>
-
-                    
-                    <div className="flex flex-col sm:flex-row gap-3">
-  <Button
-    variant="outline"
-    size="lg"
-    className="flex-1 whitespace-nowrap"
-    onClick={() => handlePhoneSubmit(true)}
-    disabled={isLoading}
-  >
-    SKIP
-  </Button>
-  <Button
-    variant="glow"
-    size="lg"
-    className="flex-1 whitespace-normal sm:whitespace-nowrap text-xs sm:text-sm"
-    onClick={() => handlePhoneSubmit(false)}
-    disabled={isLoading || !phone}
-  >
-    {isLoading ? (
-      <span className="flex items-center gap-2">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{
-            duration: 1,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="w-5 h-5 border-2 border-current border-t-transparent rounded-full"
-        />
-        Sending...
-      </span>
-    ) : (
-      "GET EXCLUSIVE ACCESS"
-    )}
-  </Button>
-</div>
-
-                    </div>
-                  </motion.div>
+              </div>
+            </motion.div>
           </>
         )}
       </AnimatePresence>
 
-      {/* Scroll Indicator */}
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
