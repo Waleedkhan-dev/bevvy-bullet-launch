@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Star, Crown, Zap, Package } from "lucide-react";
+import { Check, Crown, Zap, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/store/cartStore";
 import { useToast } from "@/hooks/use-toast";
@@ -22,27 +22,14 @@ interface PricingTier {
 }
 
 const pricingTiers: PricingTier[] = [
-   {
-    id: "standard",
-    name: "STANDARD",
-    icon: Package,
-    price: 52,
-    originalPrice: 67,
-    packPrice: 150,
-    packOriginalPrice: 201,
-    discount: "22% OFF",
-    remaining: 999,
-    total: 999,
-    perks: ["Standard Bevvy Bullet", "Free Shipping"],
-  },
   {
     id: "founder",
     name: "FOUNDERS",
     icon: Crown,
     price: 41,
-    originalPrice: 67,
+    originalPrice: 75,
     packPrice: 105,
-    packOriginalPrice: 201,
+    packOriginalPrice: 225,
     discount: "45% OFF",
     remaining: 23,
     total: 100,
@@ -60,32 +47,27 @@ const pricingTiers: PricingTier[] = [
     name: "EARLY BIRD",
     icon: Zap,
     price: 47,
-    originalPrice: 67,
+    originalPrice: 75,
     packPrice: 135,
-    packOriginalPrice: 201,
-    discount: "30% OFF",
+    packOriginalPrice: 225,
+    discount: "37% OFF",
     remaining: 500,
     total: 500,
     badge: "NEXT 500",
     perks: ["10% Future Discount", "Priority Shipping"],
   },
-    {
-    id: "super-early-bird",
-    name: "SUPER EARLY BIRD",
-    icon: Star,
-    price: 42,
-    originalPrice: 67,
-    packPrice: 120,
-    packOriginalPrice: 201,
-    discount: "37% OFF",
-    remaining: 287,
-    total: 400,
-    badge: "NEXT 400",
-    perks: [
-      "Silver Bevvy Bullet Edition",
-      "Early Supporter Badge",
-      "Lifetime 15% Discount",
-    ],
+  {
+    id: "backer",
+    name: "BACKER",
+    icon: Package,
+    price: 52,
+    originalPrice: 75,
+    packPrice: 150,
+    packOriginalPrice: 225,
+    discount: "31% OFF",
+    remaining: 999,
+    total: 999,
+    perks: ["Standard Bevvy Bullet", "Free Shipping"],
   },
 ];
 
@@ -128,7 +110,7 @@ export const PricingTiersSection = () => {
         </motion.div>
 
         {/* Pricing Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto items-stretch">
           {pricingTiers.map((tier, index) => (
             <motion.div
               key={tier.id}
@@ -150,14 +132,14 @@ export const PricingTiersSection = () => {
 
               {/* Popular Badge */}
               {tier.popular && (
-                <div className="absolute -top-3 right-4">
+                <div className="absolute top-6 -rotate-[40deg] -left-4">
                   <span className="bg-black text-primary text-xs font-mono font-bold px-2 py-1 rounded border border-primary">
                     MOST POPULAR
                   </span>
                 </div>
               )}
 
-              {/* Tier Header */}
+              
               <div className="text-center pt-4 mb-6">
                 <tier.icon className="w-10 h-10 mx-auto mb-3 text-primary" />
                 <h3 className="font-mono text-lg font-bold uppercase tracking-wider">
@@ -168,7 +150,7 @@ export const PricingTiersSection = () => {
                 </span>
               </div>
 
-              {/* Pack Toggle */}
+          
               <div className="flex gap-2 mb-6">
                 <button
                   onClick={() =>
@@ -253,7 +235,7 @@ export const PricingTiersSection = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-center text-muted-foreground text-sm mt-12 max-w-2xl mx-auto"
         >
-          All prices are pre-order pricing. Retail price will be $67 per unit
+          All prices are pre-order pricing. Retail price will be $75 per unit
           after launch. Shipping calculated at checkout. Expected delivery:
           2026.
         </motion.p>

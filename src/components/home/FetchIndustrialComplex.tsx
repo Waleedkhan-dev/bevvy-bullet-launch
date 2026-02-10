@@ -113,27 +113,6 @@ export const FetchIndustrialComplex = () => {
                   />
                 )}
 
-                {/* Live Indicator */}
-                {stat.isLive && (
-                  <div className="absolute top-3 right-3 flex items-center gap-2">
-                    <motion.div
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.5, 1, 0.5],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      className="w-2 h-2 bg-primary rounded-full"
-                    />
-                    <span className="text-xs font-mono text-primary/70 uppercase">
-                      Live
-                    </span>
-                  </div>
-                )}
-
                 {/* Content */}
                 <div className="relative z-10 flex flex-col h-full">
                   {/* Label */}
@@ -198,8 +177,7 @@ export const FetchIndustrialComplex = () => {
           className="text-center mt-12 md:mt-16"
         >
           <p className="font-mono text-sm md:text-base text-foreground/70 max-w-2xl mx-auto">
-            These numbers update in real-time. The fetch is costing us more
-            than we think.
+            The fetch is costing us more than we think.
           </p>
         </motion.div>
       </div>

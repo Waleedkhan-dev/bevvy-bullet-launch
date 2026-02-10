@@ -7,6 +7,9 @@ import { useToast } from "@/hooks/use-toast";
 import { Label } from "@/components/ui/label";
 import HeroImg from "@/images/heroimg.png";
 import HeroImg1 from "@/images/image.png";
+import HeroImg2 from "@/images/hero2.jpeg";
+
+import HeroImg4 from "@/images/hero4.jpeg";
 import axios from "axios";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
@@ -124,7 +127,7 @@ export const HeroSection = () => {
 
 
 
-  const imageArray = [HeroImg, HeroImg1, HeroImg, HeroImg1, HeroImg];
+  const imageArray = [HeroImg, HeroImg1, HeroImg2, HeroImg4];
 
 
   return (

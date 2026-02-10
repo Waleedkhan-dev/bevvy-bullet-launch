@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { Instagram, Twitter, Facebook, Youtube } from "lucide-react";
 
 const footerLinks = {
-  shop: [
-    { name: "All Products", path: "/shop" },
-    { name: "Pre-Orders", path: "/shop?filter=preorder" },
-    { name: "Gift Cards", path: "/shop/gift-cards" },
-  ],
+  // shop: [
+  //   { name: "All Products", path: "/shop" },
+  //   { name: "Pre-Orders", path: "/shop?filter=preorder" },
+  //   { name: "Gift Cards", path: "/shop/gift-cards" },
+  // ],
   company: [
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
@@ -65,7 +65,7 @@ export const Footer = () => {
           </div>
 
           {/* Shop Links */}
-          <div>
+          {/* <div>
             <h4 className="font-mono text-sm font-bold uppercase tracking-wider text-foreground mb-4">
               Shop
             </h4>
@@ -81,7 +81,7 @@ export const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* Company Links */}
           <div>

@@ -17,14 +17,14 @@ const navLinks: NavLink[] = [
   { name: "THE THROW", href: "#throw" },
   { name: "THE REVOLUTION", href: "#revolution" },
   { name: "JOIN", href: "#join" },
-  {
-    name: "SHOP",
-    dropdown: [
-      { name: "All Products", path: "/shop" },
-      { name: "Pre-Orders", path: "/shop/pre-orders" },
-      { name: "Gift Cards", path: "/shop/gift-cards" },
-    ],
-  },
+  // {
+  //   name: "SHOP",
+  //   dropdown: [
+  //     { name: "All Products", path: "/shop" },
+  //     { name: "Pre-Orders", path: "/shop/pre-orders" },
+  //     { name: "Gift Cards", path: "/shop/gift-cards" },
+  //   ],
+  // },
   {
     name: "COMPANY",
     dropdown: [

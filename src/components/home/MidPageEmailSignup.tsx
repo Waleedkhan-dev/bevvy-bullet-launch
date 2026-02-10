@@ -104,7 +104,7 @@ export const MidPageEmailSignup = () => {
             </form>
 
             <p className="text-xs text-muted-foreground mt-4">
-              Join 3,800+ people waiting for launch. No spam, ever.
+              Get notified the moment we launch
             </p>
           </div>
         </motion.div>

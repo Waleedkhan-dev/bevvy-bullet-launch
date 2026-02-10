@@ -5,6 +5,34 @@ import { Layout } from "@/components/layout/Layout";
 import { useCartStore } from "@/store/cartStore";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { Waves, Flame, TreePine, PartyPopper } from "lucide-react";
+
+const lifestyleScenes = [
+  {
+    label: "BEACH",
+    icon: Waves,
+    gradient: "from-cyan-600/80 to-blue-800/80",
+    tagline: "Sand. Sun. Sends.",
+  },
+  {
+    label: "TAILGATE",
+    icon: PartyPopper,
+    gradient: "from-orange-600/80 to-red-800/80",
+    tagline: "Game day. Sorted.",
+  },
+  {
+    label: "BACKYARD BBQ",
+    icon: Flame,
+    gradient: "from-amber-600/80 to-orange-800/80",
+    tagline: "Grill. Chill. Launch.",
+  },
+  {
+    label: "LAKE",
+    icon: TreePine,
+    gradient: "from-emerald-600/80 to-teal-800/80",
+    tagline: "No more swim retrieval.",
+  },
+];
 
 
 const Checkout = () => {
@@ -79,6 +107,37 @@ const clearCart = useCartStore((state) => state.clearCart);
     <Layout>
       <div className="min-h-screen py-12">
         <div className="container mx-auto px-4">
+          {/* Lifestyle Scenes Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-8"
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {lifestyleScenes.map((scene, index) => (
+                <motion.div
+                  key={scene.label}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className={`relative overflow-hidden rounded-xl aspect-[4/3] bg-gradient-to-br ${scene.gradient} flex flex-col items-center justify-center text-center p-4 group cursor-default`}
+                >
+                  <scene.icon className="w-8 h-8 md:w-10 md:h-10 text-white/90 mb-2 group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="font-mono text-xs md:text-sm font-bold text-white tracking-wider">
+                    {scene.label}
+                  </h3>
+                  <p className="text-[10px] md:text-xs text-white/70 mt-1">
+                    {scene.tagline}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+            <p className="text-center text-xs text-muted-foreground mt-3 font-mono">
+              BEVVY BULLET — BUILT FOR EVERY MOMENT
+            </p>
+          </motion.div>
+
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Order Review */}
             <div className="lg:col-span-2">
