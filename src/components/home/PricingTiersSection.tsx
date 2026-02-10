@@ -34,13 +34,14 @@ const pricingTiers: PricingTier[] = [
     remaining: 23,
     total: 100,
     badge: "FIRST 100",
+  
     perks: [
       "Gold Bevvy Bullet Edition",
       "Founder Serial Number",
       "Lifetime 20% Discount",
       "Exclusive Founders Discord",
+      
     ],
-    popular: true,
   },
   {
     id: "early-bird",
@@ -55,6 +56,7 @@ const pricingTiers: PricingTier[] = [
     total: 500,
     badge: "NEXT 500",
     perks: ["10% Future Discount", "Priority Shipping"],
+    popular: true,
   },
   {
     id: "backer",
@@ -67,6 +69,7 @@ const pricingTiers: PricingTier[] = [
     discount: "31% OFF",
     remaining: 999,
     total: 999,
+      badge: "Unlimited",
     perks: ["Standard Bevvy Bullet", "Free Shipping"],
   },
 ];
@@ -109,8 +112,8 @@ export const PricingTiersSection = () => {
           </p>
         </motion.div>
 
-        {/* Pricing Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto items-stretch">
+    
+        <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto items-stretch">
           {pricingTiers.map((tier, index) => (
             <motion.div
               key={tier.id}
@@ -118,9 +121,16 @@ export const PricingTiersSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`glass-card p-4 sm:p-6 relative flex flex-col ${tier.popular ? "border-primary ring-2 ring-primary/20" : ""
+              className={`glass-card p-4 sm:p-6  flex flex-col ${tier.popular ? "border-primary ring-2 ring-primary/20" : ""
                 }`}
             >
+               {tier.popular && (
+                <div className="absolute top-6 -rotate-[40deg] -left-4">
+                  <span className="bg-black text-primary text-xs font-mono font-bold px-2 py-1 rounded border border-primary">
+                    MOST POPULAR
+                  </span>
+                </div>
+              )}
               {/* Badge */}
               {tier.badge && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
@@ -131,13 +141,7 @@ export const PricingTiersSection = () => {
               )}
 
               {/* Popular Badge */}
-              {tier.popular && (
-                <div className="absolute top-6 -rotate-[40deg] -left-4">
-                  <span className="bg-black text-primary text-xs font-mono font-bold px-2 py-1 rounded border border-primary">
-                    MOST POPULAR
-                  </span>
-                </div>
-              )}
+             
 
               
               <div className="text-center pt-4 mb-6">
