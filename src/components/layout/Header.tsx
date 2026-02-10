@@ -190,7 +190,7 @@ export const Header = () => {
             <button className="p-2 text-muted-foreground hover:text-primary transition-colors">
               <User className="w-5 h-5" />
             </button> */}
-            <Link
+            {/* <Link
               to="/cart"
               className="relative p-2 text-muted-foreground hover:text-primary transition-colors"
             >
@@ -204,12 +204,12 @@ export const Header = () => {
                   {tototalItems}
                 </motion.span>
               )}
-            </Link>
+            </Link> */}
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-4">
-            <Link
+            {/* <Link
               to="/cart"
               className="relative p-2 text-muted-foreground hover:text-primary transition-colors"
             >
@@ -219,7 +219,7 @@ export const Header = () => {
                   {tototalItems}
                 </span>
               )}
-            </Link>
+            </Link> */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 text-muted-foreground hover:text-primary transition-colors"
