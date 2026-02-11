@@ -14,12 +14,12 @@ export const MidPageEmailSignup = () => {
   const rotatingButtonTexts = [
     "JOIN THE REVOLUTION",
     "I'M DONE WALKING",
-    "END MY 47 MILES",
+    "END MY 47 steps",
     "I'M NEVER FETCHING AGAIN",
     "BE THE FIRST TO THROW",
     "THE FETCH ENDS WITH ME",
     "NO MORE FETCH QUESTS",
-    "47 MILES IS ENOUGH",
+    "47 STEPS IS ENOUGH",
     "STOP THE WALKING",
   ];
 

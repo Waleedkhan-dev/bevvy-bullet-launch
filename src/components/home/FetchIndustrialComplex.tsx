@@ -31,7 +31,7 @@ export const FetchIndustrialComplex = () => {
     {
       label: "WALKED TODAY",
       value: formatNumber(walkedToday),
-      unit: "miles",
+      unit: "steps",
       color: "text-primary",
       isLive: true,
     

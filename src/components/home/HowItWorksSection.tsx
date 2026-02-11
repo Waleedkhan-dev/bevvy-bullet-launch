@@ -12,7 +12,7 @@ const steps = [
     icon: Rocket,
     number: "02",
     title: "BACK US ON KICKSTARTER",
-    description: "When we launch March 1st, pledge on Kickstarter to secure your Bevvy Bullet",
+    description: "When we launch, pledge on Kickstarter to secure your Bevvy Bullet",
   },
   {
     icon: Package,

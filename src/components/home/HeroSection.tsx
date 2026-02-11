@@ -29,26 +29,24 @@ export const HeroSection = () => {
   const [count, setCount] = useState<number>(47293182);
   const [showPhonePopup, setShowPhonePopup] = useState(false);
   const [emailSubmitted, setEmailSubmitted] = useState(false);
-  const [rotatingTextIndex, setRotatingTextIndex] = useState(0);
   const [rotatingButtonIndex, setRotatingButtonIndex] = useState(0);
+  const [rotatingSubheadIndex, setRotatingSubheadIndex] = useState(0);
   const { toast } = useToast();
 
-  const rotatingTexts = [
-    "You wish your tailgate had this",
-    "Literally the easiest party flex",
-    "Turn any can into a backyard legend",
-    "Your uncle's definitely stealing this",
+  const rotatingSubheadTexts = [
+    "Yeet the Heat",
+    "Sling Suds with Buds",
   ];
 
   const rotatingButtonTexts = [
     "JOIN THE REVOLUTION",
     "I'M DONE WALKING",
-    "END MY 47 MILES",
+    "END MY 47 MILLION STEPS",
     "I'M NEVER FETCHING AGAIN",
     "BE THE FIRST TO THROW",
     "THE FETCH ENDS WITH ME",
     "NO MORE FETCH QUESTS",
-    "47 MILES IS ENOUGH",
+    "47 MILLION STEPS IS ENOUGH",
     "STOP THE WALKING",
   ];
 
@@ -60,18 +58,16 @@ export const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Rotating text - changes every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setRotatingTextIndex((prev) => (prev + 1) % rotatingTexts.length);
+      setRotatingButtonIndex((prev) => (prev + 1) % rotatingButtonTexts.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
 
-
   useEffect(() => {
     const interval = setInterval(() => {
-      setRotatingButtonIndex((prev) => (prev + 1) % rotatingButtonTexts.length);
+      setRotatingSubheadIndex((prev) => (prev + 1) % rotatingSubheadTexts.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -139,40 +135,36 @@ export const HeroSection = () => {
       <div className="absolute bottom-1/4 right-0 sm:right-1/4 w-48 h-48 md:w-96 md:h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="order-2 lg:order-1"
           >
             {/* Main Headline with Counter */}
             <h1 className="font-mono text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 md:mb-6 leading-tight">
               AMERICANS HAVE WALKED{" "}
-              <span className="text-primary">{formatNumber(count)}</span> MILES
+              <span className="text-primary">{formatNumber(count)}</span> STEPS
               FOR OTHER PEOPLE'S DRINKS
             </h1>
 
-            {/* Rotating Text */}
-            <div className="h-8 mb-4 overflow-hidden">
+        
+            <div className="text-lg md:text-xl text-primary  mb-6 max-w-xl font-bold h-8 relative overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.p
-                  key={rotatingTextIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="text-sm md:text-base text-muted-foreground italic"
+                  key={rotatingSubheadIndex}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="absolute"
                 >
-                  {rotatingTexts[rotatingTextIndex]}
+                  {rotatingSubheadTexts[rotatingSubheadIndex]}
                 </motion.p>
               </AnimatePresence>
             </div>
-
-            {/* Subhead */}
-            <p className="text-lg md:text-xl text-primary uppercase mb-6 max-w-xl font-bold">
-              THE LAKE INCIDENT THAT STARTED A REVOLUTION
-            </p>
 
             {/* Tagline */}
             <p className="text-base md:text-lg text-foreground/90 mb-8 max-w-xl leading-relaxed">
@@ -197,7 +189,7 @@ export const HeroSection = () => {
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
                 <span className="text-foreground font-mono font-bold tracking-wide">
-                  REVOLUTION: STARTING
+                  REVOLUTION: STARTED
                 </span>
               </div>
             </div>
@@ -259,12 +251,12 @@ export const HeroSection = () => {
 
 
 
-          {/* Right Content - Product Slider */}
+          {/* Product Slider - shows first on mobile */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative w-full flex items-center justify-center"
+            className="relative w-full flex items-center justify-center order-1 lg:order-2"
           >
             <div className="w-full">
               <Swiper

@@ -133,7 +133,7 @@ export const ManifestoSection = () => {
                   Bevvy Bullet
                 </p>
                 <p className="italic text-muted-foreground">
-                  Because 47 miles is 47 miles too many.
+                  Because 47 steps is 47 steps too many.
                 </p>
               </div>
             </footer>

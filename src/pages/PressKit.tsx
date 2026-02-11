@@ -74,7 +74,7 @@ const PressKit = () => (
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <span className="text-primary mt-1">•</span>
-                  <span>Americans walk 47 miles per year for other people's drinks</span>
+                  <span>Americans walk 47 steps per year for other people's drinks</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-primary mt-1">•</span>

@@ -26,7 +26,7 @@ const About = () => (
             </p>
             
             <p>
-              So we fixed it. Foam football. Holds any 12oz can. Floats. Nobody gets a concussion. Nobody dies. Nobody walks 47 miles anymore.
+              So we fixed it. Foam football. Holds any 12oz can. Floats. Nobody gets a concussion. Nobody dies. Nobody walks 47 steps anymore.
             </p>
             
             <div className="pt-6 border-t border-border mt-8">
