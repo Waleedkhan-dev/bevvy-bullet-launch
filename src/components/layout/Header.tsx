@@ -207,7 +207,7 @@ export const Header = () => {
             </Link> */}
           </div>
 
-          {/* Mobile Menu Button */}
+         
           <div className="flex md:hidden items-center gap-4">
             {/* <Link
               to="/cart"
