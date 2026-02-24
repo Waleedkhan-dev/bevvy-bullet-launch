@@ -162,7 +162,7 @@ export const Header = () => {
                     </AnimatePresence>
                   </div>
                 ) : (
-                  // Regular anchor link
+          
                   <button
                     onClick={() => link.href && scrollToSection(link.href)}
                     className={`font-medium text-sm uppercase tracking-wider transition-colors relative group ${
