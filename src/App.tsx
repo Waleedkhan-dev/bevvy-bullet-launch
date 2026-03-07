@@ -14,6 +14,8 @@ import FAQ from "./pages/FAQ";
 import PressKit from "./pages/PressKit";
 import NotFound from "./pages/NotFound";
 import Success from "./pages/Success";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
 
 
 const queryClient = new QueryClient();
@@ -35,6 +37,8 @@ const App = () => (
           <Route path="/success" element={<Success/>} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/press-kit" element={<PressKit />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsConditions />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </TooltipProvider>

@@ -11,10 +11,10 @@ const footerLinks = {
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
     { name: "FAQ", path: "/faq" },
-    { name: "Press Kit", path: "/press" },
+    { name: "Press Kit", path: "/press-kit" },
   ],
   legal: [
-    { name: "Privacy Policy", path: "/privacy" },
+    { name: "Privacy Policy", path: "/privacy-policy" },
     { name: "Terms & Conditions", path: "/terms" },
     { name: "Shipping Policy", path: "/shipping" },
   ],
