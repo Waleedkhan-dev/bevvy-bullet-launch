@@ -130,7 +130,7 @@ export const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden grid-pattern w-full">
-      {/* Gradient Orbs */}
+      
       <div className="absolute top-1/4 left-0 sm:left-1/4 w-48 h-48 md:w-96 md:h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-0 sm:right-1/4 w-48 h-48 md:w-96 md:h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -143,7 +143,7 @@ export const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="order-2 lg:order-1"
           >
-            {/* Main Headline with Counter */}
+            
             <h1 className="font-mono text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 md:mb-6 leading-tight">
               AMERICANS HAVE WALKED{" "}
               <span className="text-primary">{formatNumber(count)}</span> STEPS
