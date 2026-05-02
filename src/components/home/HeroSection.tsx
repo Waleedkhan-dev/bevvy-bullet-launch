@@ -297,7 +297,7 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Phone Number Popup */}
+  
       <AnimatePresence>
         {showPhonePopup && (
           <>
