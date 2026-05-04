@@ -166,7 +166,7 @@ export const HeroSection = () => {
               </AnimatePresence>
             </div>
 
-            {/* Tagline */}
+          
             <p className="text-base md:text-lg text-foreground/90 mb-8 max-w-xl leading-relaxed">
               One bad throw. One near concussion. One question: Why are we
               throwing metal cans at people we love?
